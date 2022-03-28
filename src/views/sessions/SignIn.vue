@@ -150,7 +150,7 @@
 <script>
 // const API = require('../src/controllers/api');
 import axios from "axios";
-axios.defaults.baseURL = "http://192.168.43.136:3000/api";
+axios.defaults.baseURL = 'https://zena-server.herokuapp.com/api';
 
 export default {
   data() {

@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import NotFound from '../views/NotFound.vue'
 import store from '../store'
 import SignIn from '../views/sessions/SignIn.vue'
-import SignUp from '../views/sessions/SignUp.vue'
 
 const routes = [
     {
@@ -56,22 +55,7 @@ const routes = [
                 ]
 
             },
-            {
-                path: '/components',
-                name: 'components',
-                component: () => import('../views/components/index.vue'),
-                meta: {
-                    title: 'Components',
-                },
-                children: [
-                    {
-                        path: 'button',
-                        name: 'button',
-                        component: () =>
-                            import('../views/components/Button.vue'),
-                    },
-                ],
-            },
+            
             {
                 path: '/profile',
                 name: 'profile',
@@ -92,7 +76,6 @@ const routes = [
     },
 
     { path: '/signIn', component: SignIn },
-    { path: '/signUp', component: SignUp },
 
 
     { path: '/:path(.*)', component: NotFound },

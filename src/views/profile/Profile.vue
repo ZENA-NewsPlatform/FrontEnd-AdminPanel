@@ -14,12 +14,12 @@
               rounded-full
               border-2 border-white
             "
-            :src="profile"
+            :src="user.photo"
             alt="profile"
             onerror="if (this.src != 'error.jpg') this.src = '/images/faces/dummy-profile.jpg';"
           />
-          <p class="text-2xl">{{ name }}</p>
-          <p class="text-gray-600">Digital Marketer</p>
+          <p class="text-2xl">{{ user.name }}</p>
+          <p class="text-gray-600">Super Administrator</p>
         </div>
       </div>
       <div class="mt-20 p-5">
@@ -632,40 +632,32 @@
   </div>
 </template>
 
-
 <script>
-
-// import Breadcrumb from "@/components/Breadcrumbs.vue";
-import { ref } from "vue";
-// import { TabGroup, TabList, Tab, TabPanels, TabPanel } from "@headlessui/vue";
 import axios from "axios";
-axios.defaults.baseURL = "https://zena-server.herokuapp.com/api";
-
-// let categories = ref(["Timeline", "About", "Friends", "Photos"]);
 
 export default {
   data() {
-    return{
-    name:'',
-    data:[],
-    profile:''
-    }
+    return {
+      user: {},
+    };
   },
+
   async created() {
-      var config = {
+    // if (!this.$store.getters.isLoggedIn) {
+    //   this.$router.push("/login");
+    // }
+    var config = {
       method: "get",
       url: "v1/admins/me",
       headers: {
-        Authorization:
-          "Bearer "+localStorage.getItem('token')    },
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
     };
+    
     const that = this;
-     axios(config)
+    axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
-        that.name=response.data.data.doc.name;
-        that.profile= response.data.data.doc.photo;
-        console.log(response.data.data.doc.name);
+        that.user = response.data.data.doc;
       })
       .catch(function (error) {
         console.log(error);
@@ -673,6 +665,7 @@ export default {
   },
 };
 </script>
+
 
 <style lang="scss" scoped>
 .user-profile {

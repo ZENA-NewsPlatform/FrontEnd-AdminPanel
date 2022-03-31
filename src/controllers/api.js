@@ -1,40 +1,39 @@
 import axios from "axios";
-axios.defaults.baseURL = "https://zena-server.herokuapp.com/api";
+// const url = 'http://localhost:3000/api/';
+export default {
+  login(credentials) {
+    return axios
+      .post("/v1/admins/login", credentials)
+      .then((response) => response.data);
+  },
 
-
-class API {
-  //Login
-  // logIn() {
-  //   var data = JSON.stringify({
-  //     email: this.email,
-  //     password: this.password,
-  //   });
-
-  //   var config = {
-  //     method: "post",
-  //     url: "/v1/admins/login",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     data: data,
-  //   };
-  //   const that = this;
-  //   axios(config)
+  // signUp(credentials) {
+  //   return axios
+  //     .post('/v1/admins/signin', credentials)
   //     .then(function (response) {
-  //       console.log(JSON.stringify(response.data));
-  //       if (response.status == 200) {
-  //         localStorage.setItem("token", response.data.token);
-  //         console.log(response.data.token);
-  //         // console.log(response.data.data.user.type);
-  //         that.type = response.data.data.user.type;
-  //         console.log(that.type);
-  //         console.log("logged in");
-  //         that.$router.push("/");
-  //       }
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     });
-  // }
-}
-export default API;
+  //             if (response.status == 200) {
+  //             localStorage.setItem("token", response.data.token);
+  //             // that.$router.push("/");
+
+  //           }
+  //         })
+  // },
+
+  getSecretContent(user) {
+    var config = {
+      method: "get",
+      url: "v1/admins/me",
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    };
+    const that = this;
+    axios(config)
+      .then(function (response) {
+        that.user = response.data.data.doc;
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  },
+};

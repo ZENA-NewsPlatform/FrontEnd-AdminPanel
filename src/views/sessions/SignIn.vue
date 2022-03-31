@@ -138,6 +138,7 @@
                     href="#"
                     >Forgot Password?</a
                   >
+                  <p>{{msg}}</p>
                 </div>
               </form>
             </div>
@@ -148,53 +149,64 @@
   </div>
 </template>
 <script>
-// const API = require('../src/controllers/api');
 import axios from "axios";
-axios.defaults.baseURL = 'https://zena-server.herokuapp.com/api';
-
+import api from "@/controllers/api.js";
 export default {
   data() {
     return {
       email: "",
       password: "",
-      type:''
+      msg: "",
+      data:''
     };
   },
 
   methods: {
-    submitForm() {
-      var data = JSON.stringify({
-      email: this.email,
-      password: this.password,
-      
-    });
-
-    var config = {
-      method: "post",
-      url: "/v1/admins/login",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: data,
-    };
-    const that = this;
-    axios(config)
-      .then(function (response) {
-        console.log(JSON.stringify(response.data));
-        if (response.status == 200) {
-          localStorage.setItem("token", response.data.token);
-          console.log(response.data.token);
-          // console.log(response.data.data.user.type);
-          that.type = response.data.data.user.type;
-          console.log(that.type);
-          console.log("logged in");
-          that.$router.push("/");
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    async submitForm() {
+      try {
+        const credentials = {
+          email: this.email,
+          password: this.password,
+        };
+        const response = await api.login(credentials);
+        const token = response.token;
+        const user = response.user;
+        this.$store.dispatch("login", { token, user });
+        localStorage.setItem("token", token);
+        this.$router.push("/");
+      } catch (error) {
+        // this.msg = error.response.data.msg;
+      }
     },
+
+    // submitForm() {
+    //   var data = JSON.stringify({
+    //   email: this.email,
+    //   password: this.password,
+
+    // });
+
+    // var config = {
+    //   method: "post",
+    //   url: "/v1/admins/login",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   data: data,
+    // };
+    // const that = this;
+    // axios(config)
+    //   .then(function (response) {
+    //       if (response.status == 200) {
+    //       localStorage.setItem("token", response.data.token);
+    //       that.$router.push("/");
+
+    //     }
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+    // },
   },
 };
 </script>

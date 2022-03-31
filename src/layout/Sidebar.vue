@@ -89,17 +89,17 @@ let handleWindowResize = () => {
               </div>
             </router-link>
 
-            <a
-              href="https://aatorx-vue-doc.vercel.app/"
-              tag="a"
+            <router-link
+              to= "/advertisements/list"
+              tag="li"
               class="nav-item"
-              target="_blank"
+             
             >
               <div class="nav-item-hold">
                 <i class="i-File-Word text-3xl"></i>
-                <p>Doc</p>
+                <p>Advertisements</p>
               </div>
-            </a>
+            </router-link>
           </ul>
         </perfect-scrollbar>
       </div>

@@ -41,16 +41,25 @@ const routes = [
                     {
                         path:'publisher',
                         name:'publisher',
-                        component: () => import('../views/management/publisher.vue')
+                        component: () => import('../views/management/publisher/publisher.vue'),
+                        meta:{
+                            title: 'publisher management'
+                        }
                     },
                     {
                         path:'visitor',
                         name:'visitor',
-                        component: () => import('../views/management/visitor.vue')
+                        component: () => import('../views/management/visitor.vue'),
+                        meta:{
+                            title: 'visitor management'
+                        }
                     }, {
                         path:'editor',
                         name:'editor',
-                        component: () => import('../views/management/editor.vue')
+                        component: () => import('../views/management/editor.vue'),
+                        meta:{
+                            title: 'editor management'
+                        }
                     },
                 ]
 
@@ -72,13 +81,44 @@ const routes = [
                     },
                 ],
             },
+
+            {
+                path: '/advertisements',
+                name: 'advertisements',
+                component: () => import('../views/advertisement/index.vue'),
+                meta:{
+                    title:'Advertisements',
+                },
+                children: [
+                    {
+                        path: 'list',
+                        name: 'ads list',
+                        component: () => import('../views/advertisement/advertisement.vue'),
+                        meta:{
+                            title: 'Advertisements'
+                        }
+                    },
+
+                    {
+                        path: 'newAd',
+                        name: 'new advertisement',
+                        component: () => import('../views/advertisement/options/AddAdvertisement.vue'),
+                        meta:{
+                            title: 'New Advertisement'
+                        }
+                    }
+                ]
+               
+            },
+           
+            
         ],
     },
 
-    { path: '/signIn', component: SignIn },
+    { path: '/signIn', component: SignIn,meta:{title:'signin'}},
 
 
-    { path: '/:path(.*)', component: NotFound },
+    { path: '/:path(.*)', component: NotFound,meta:{title:'Error'} },
 ]
 
 const router = createRouter({
@@ -87,6 +127,11 @@ const router = createRouter({
         return { left: 0, top: 0 }
     },
     routes,
+})
+
+router.beforeEach((to,from,next) =>{
+    document.title = `${to.meta.title}`;
+    next();
 })
 
 router.afterEach(() => {

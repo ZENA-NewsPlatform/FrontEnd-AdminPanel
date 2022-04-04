@@ -641,6 +641,16 @@ export default {
       user: {},
     };
   },
+  // computed:{
+  //   token(){
+  //     return this.$store.getters.isLoggedIn;
+  //   }
+  // },
+computed: {
+  check () {
+    return this.$store.getters.isLoggedIn
+  }
+},
 
   async created() {
     // if (!this.$store.getters.isLoggedIn) {
@@ -653,11 +663,16 @@ export default {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
     };
+
+    
     
     const that = this;
     axios(config)
       .then(function (response) {
         that.user = response.data.data.doc;
+        console.log(that.check)
+        // console.log(token);
+       
       })
       .catch(function (error) {
         console.log(error);

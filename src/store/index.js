@@ -27,9 +27,8 @@ export default createStore({
     login: ({ commit, dispatch }, { token, user }) => {
       commit("SET_TOKEN", token);
       commit("SET_USER", user);
-      // set auth header
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      
+      // console.log(token);
     },
     logout: ({ commit }) => {
       commit("RESET", "");

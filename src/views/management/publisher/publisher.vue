@@ -1,19 +1,37 @@
 <template>
- 
   <div class="flex justify-between px-4 mt-4 sm:px-8">
     <h2 class="text-2xl text-gray-600">Publisher's list</h2>
     <div class="flex items-center space-x-1 text-xs">
-     <svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-2 w-2"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"
+        />
       </svg>
-        </div>
+    </div>
   </div>
   <div>
-    <h4 class="text-sm pl-8"> {{resultsCounter}} publishers</h4>
+    <h4 class="text-sm pl-8">{{ resultsCounter }} publishers</h4>
   </div>
- <!-- <AddPublisher v-if="creating"></AddPublisher> -->
+  <!-- <AddPublisher v-if="creating"></AddPublisher> -->
 
   <div class="p-4 mt-0 sm:px-8 sm:py-4">
+    <div class="text-black-400">
+      <ReportFilter
+        :filterData="filterPublishers"
+        :options="options"
+        class="ml-8"
+      ></ReportFilter>
+    </div>
+
     <div class="p-4 bg-white rounded">
       <div class="flex justify-between">
         <div>
@@ -54,11 +72,11 @@
             />
           </div>
         </div>
-        
+
         <div>
           <div>
-            <button
-            @click="createAccount"
+            <router-link
+              to="/management/newPublisher"
               class="
                 flex
                 items-center
@@ -70,33 +88,37 @@
                 hover:bg-green-600
               "
             >
-               <svg
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-6 w-6 mr-1"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-              </svg> 
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                />
+              </svg>
 
               Add New
-            </button>
+            </router-link>
           </div>
         </div>
       </div>
 
-      <!--PUBLISHER TABLE -->
-     <ReportTable :users="users">
-       <!-- TABLE HEADERS -->
-       <template v-slot:th1>NAME</template>  
-       <template v-slot:th2>TYPE</template>
-       <template v-slot:th3>STATUS</template>
-       <template v-slot:th4>TOTAL POSTS</template>
-       <template v-slot:th5>START DATE</template>
-       <template v-slot:th6>OPERATIONS</template>
-  
-     </ReportTable>
+      <!--PUBLISHER TABLE OF REPORT-->
+      <ReportTable :users="users">
+        <!-- TABLE HEADERS -->
+        <template v-slot:th1>NAME</template>
+        <template v-slot:th2>TYPE</template>
+        <template v-slot:th3>STATUS</template>
+        <template v-slot:th4>TOTAL POSTS</template>
+        <template v-slot:th5>START DATE</template>
+        <template v-slot:th6>OPERATIONS</template>
+      </ReportTable>
     </div>
   </div>
 </template>
@@ -105,16 +127,19 @@
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 import { ref } from "vue";
 import axios from "axios";
-import ReportTable from '../../components/utilities/ReportTable.vue'
-import AddPublisher from "./AddPublisher.vue"
+import ReportTable from "../../components/utilities/ReportTable.vue";
+import ReportFilter from "../../components/utilities/ReportFilter.vue";
+import AddPublisher from "./AddPublisher.vue";
 axios.defaults.baseURL = "https://zena-server.herokuapp.com/api";
 
 export default {
   data() {
     return {
-      users:{},
-      resultsCounter:0,
+      users: {},
+      // filterCandidate: [],
+      resultsCounter: 0,
       creating: false,
+      options:["free","paid","All"],
     };
   },
   components: {
@@ -123,35 +148,48 @@ export default {
     MenuItems,
     MenuItem,
     AddPublisher,
-    ReportTable
+    ReportTable,
+    ReportFilter,
   },
+
+
   async created() {
     var config = {
       method: "get",
-      url: "v1/publisherChannels",
+      url: "v1/publisherchannels",
       headers: {},
     };
+
 
     const that = this;
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
-        that.users=response.data.data.doc;
-        console.log(response.data.results)
-        that.resultsCounter = response.data.results
-       
-        })
+        that.users = response.data.data.doc;
+
+        // that.options = response.data.doc;
+        console.log(response.data.results);
+        that.resultsCounter = response.data.results;
+      })
       .catch(function (error) {
         console.log(error);
       });
   },
-  methods:{
-      createAccount(){
-    this.creating=true;
+  methods: {
+    createAccount() {
+      this.creating = true;
+    },
+    cancelCreating() {
+      this.creating = false;
+    },
+    // filterPublishers(category) {
+      // const filterCandidate = Object.entries(this.users)
+      // if(category !== 'All'){
+      //  filterCandidate = filterCandidate.filter((user) => {
+      //   return user.priceType === category;
+      // });
+      // }
+    // },
   },
-  cancelCreating(){
-    this.creating=false;
-  }
-  }
 };
 </script>

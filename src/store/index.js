@@ -2,6 +2,10 @@ import { createStore } from "vuex";
 import axios from 'axios';
 import largeSidebar from "./modules/largeSidebar";
 import accounts from "./modules/admin/accounts";
+import totalStats from "./modules/statistics/totalStats"
+
+
+
 const getDefaultState = () => {
   return {
     token: "",
@@ -24,12 +28,13 @@ export default createStore({
   },
 
   actions: {
-    login: ({ commit, dispatch }, { token, user }) => {
+    
+    login: ({ commit }, { token, user}) => {
       commit("SET_TOKEN", token);
       commit("SET_USER", user);
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      // console.log(token);
     },
+
     logout: ({ commit }) => {
       commit("RESET", "");
     },
@@ -47,5 +52,6 @@ export default createStore({
   modules: {
     largeSidebar,
     accounts,
+    totalStats
   },
 });

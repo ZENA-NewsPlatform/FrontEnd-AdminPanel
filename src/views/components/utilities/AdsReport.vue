@@ -17,7 +17,7 @@
 
       <tbody class="divide-y divide-gray-200" >
         <!--Table body-->
-        <tr v-for="user in users" :key="user.id">
+        <tr v-for="ad in ads" :key="ad.id">
           <td class="p-2">
             <input
               type="checkbox"
@@ -35,21 +35,21 @@
           <td class="flex items-center py-4">
             <!-- <img
                 class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
-                :src="user.avatar"
+                :src="ad.avatar"
                 alt=""
               /> -->
             <div class="px-4">
               <div>
                 <a href="#" class="text-gray-600 font-bolder">{{
-                  user.name
+                  ad.link
                 }}</a>
               </div>
             </div>
           </td>
-          <td>{{ user.priceType }}</td>
+          <td>{{ ad.priceType }}</td>
           <td>
             <span
-              v-if="(user.pricetype = 'free')"
+              v-if="(ad.active =true)"
               class="px-2 py-1 rounded text-xs text-white bg-green-500"
               >Active</span
             >
@@ -57,8 +57,8 @@
               >Suspended</span
             >
           </td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.createdDate.slice(0, 10) }}</td>
+          <td>{{ ad.advertiser }}</td>
+          <td>data</td>
           <td class="text-right">
             <Menu as="div" class="relative inline-block text-left">
               <div>
@@ -430,7 +430,7 @@
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 import { ref } from "vue";
 export default {
-  props: ["publishers", "ads"],
+  props: ["ads"],
 
   data() {
     return {
@@ -444,13 +444,14 @@ export default {
     MenuItem,
   },
 
-  computed: {
-    users() {
-      return this.$props.publishers;
-    },
-    
+
+  computed:{
+      ads(){
+          return this.$props.ads
+      }
+  }
+
   
-  },
 };
 </script>
 

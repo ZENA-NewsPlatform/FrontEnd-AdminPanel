@@ -19,12 +19,15 @@
             onerror="if (this.src != 'error.jpg') this.src = '/images/faces/dummy-profile.jpg';"
           />
           <p class="text-2xl">{{ user.name }}</p>
-          <p class="text-gray-600">Super Administrator</p>
+          <div v-for="totalStat in totalStats" :key="totalStat.id">
+            <p>{{ totalStat.statType }}</p>
+          </div>
+          <p class="text-gray-600">{{ user.type }}</p>
         </div>
       </div>
       <div class="mt-20 p-5">
         <!-- TABS -->
-        <!-- <TabGroup>
+        <TabGroup>
           <TabList class="flex bg-white justify-center">
             <Tab
               v-for="category in categories"
@@ -48,7 +51,7 @@
           </TabList>
 
           <TabPanels class="mt-10">
-            <TabPanel>
+            <!-- <TabPanel>
               <ul class="timeline clearfix">
                 <li class="timeline-line"></li>
                 <li class="timeline-item">
@@ -256,7 +259,7 @@
                   </BaseBtn>
                 </li>
               </ul>
-            </TabPanel>
+            </TabPanel> -->
             <TabPanel>
               <div class="p-5">
                 <p class="text-xl font-semibold mb-2">Personal Information</p>
@@ -280,101 +283,66 @@
                 >
                   <div class="col-span-12 sm:col-span-6 md:col-span-4">
                     <p class="text-purple-500 mb-1">
-                      <i class="i-Calendar text-base"></i
-                      ><span class="ml-1">Birth Date</span>
-                    </p>
-                    <span>1, Jan 1994</span>
-                  </div>
-                  <div class="col-span-12 sm:col-span-6 md:col-span-4">
-                    <p class="text-purple-500 mb-1">
-                      <i class="i-MaleFemale text-base"></i
-                      ><span class="ml-1">Gender</span>
-                    </p>
-                    <span>1, Jan 1994</span>
-                  </div>
-                  <div class="col-span-12 sm:col-span-6 md:col-span-4">
-                    <p class="text-purple-500 mb-1">
                       <i class="i-Face-Style-4 text-base"></i
                       ><span class="ml-1">Profession</span>
                     </p>
-                    <span>Digital Marketer</span>
-                  </div>
-                  <div class="col-span-12 sm:col-span-6 md:col-span-4">
-                    <p class="text-purple-500 mb-1">
-                      <i class="i-Calendar text-base"></i
-                      ><span class="ml-1">Birth Date</span>
-                    </p>
-                    <span>1, Jan 1994</span>
-                  </div>
-                  <div class="col-span-12 sm:col-span-6 md:col-span-4">
-                    <p class="text-purple-500 mb-1">
-                      <i class="i-MaleFemale text-base"></i
-                      ><span class="ml-1">Gender</span>
-                    </p>
-                    <span>1, Jan 1994</span>
-                  </div>
-                  <div class="col-span-12 sm:col-span-6 md:col-span-4">
-                    <p class="text-purple-500 mb-1">
-                      <i class="i-Face-Style-4 text-base"></i
-                      ><span class="ml-1">Profession</span>
-                    </p>
-                    <span>Digital Marketer</span>
+                    <span>Programmer</span>
                   </div>
                   <div class="col-span-12 sm:col-span-6 md:col-span-4">
                     <p class="text-purple-500 mb-1">
                       <i class="i-Globe text-base"></i
                       ><span class="ml-1"> Lives In </span>
                     </p>
-                    <span>8 Years</span>
+                    <span>Ethiopia</span>
                   </div>
                   <div class="col-span-12 sm:col-span-6 md:col-span-4">
                     <p class="text-purple-500 mb-1">
                       <i class="i-Edit-Map text-base"></i
                       ><span class="ml-1">Email</span>
                     </p>
-                    <span>example@ui-lib.com</span>
+                    <span>{{ user.email }}</span>
                   </div>
                   <div class="col-span-12 sm:col-span-6 md:col-span-4">
                     <p class="text-purple-500 mb-1">
                       <i class="i-Professor text-base"></i
                       ><span class="ml-1"> Experience</span>
                     </p>
-                    <span>8 Years</span>
+                    <span>2 Years</span>
                   </div>
                 </div>
                 <div class="my-5">
-                  <p class="text-2xl">Timothy Carlson</p>
-                  <p class="text-gray-600">Digital Marketer</p>
+                  <p class="text-2xl">{{ user.name }}</p>
+                  <p class="text-gray-600">{{ user.type }}</p>
                 </div>
                 <div class="flex justify-around flex-wrap">
                   <div class="text-center mx-4 my-2">
                     <i class="i-Plane text-4xl text-purple-500"></i>
-                    <p class="text-base">Travelling</p>
+                    <p class="text-base">Vue</p>
                   </div>
                   <div class="text-center mx-4 my-2">
                     <i class="i-Camera text-4xl text-purple-500"></i>
-                    <p class="text-base">Photography</p>
+                    <p class="text-base">Node Js</p>
                   </div>
                   <div class="text-center mx-4 my-2">
                     <i class="i-Car-3 text-4xl text-purple-500"></i>
-                    <p class="text-base">Driving</p>
+                    <p class="text-base">Express Js</p>
                   </div>
                   <div class="text-center mx-4 my-2">
                     <i class="i-Gamepad-2 text-4xl text-purple-500"></i>
-                    <p class="text-base">Gaming</p>
+                    <p class="text-base">MongoDB</p>
                   </div>
                   <div class="text-center mx-4 my-2">
                     <i class="i-Music-Note-2 text-4xl text-purple-500"></i>
-                    <p class="text-base">Music</p>
+                    <p class="text-base">Flutter</p>
                   </div>
                   <div class="text-center mx-4 my-2">
                     <i class="i-Shopping-Bag text-4xl text-purple-500"></i>
-                    <p class="text-base">Shopping</p>
+                    <p class="text-base">Figma</p>
                   </div>
                 </div>
               </div>
             </TabPanel>
-            <TabPanel>
+            <!-- <TabPanel>
               <div class="grid grid-cols-12 gap-5">
                 <div
                   class="col-span-12 xl:col-span-3 lg:col-span-4 md:col-span-6"
@@ -512,8 +480,8 @@
                   </BaseCard>
                 </div>
               </div>
-            </TabPanel>
-            <TabPanel>
+            </TabPanel> -->
+            <!-- <TabPanel>
               <div class="grid grid-cols-12 gap-5">
                 <div class="col-span-12 lg:col-span-4 md:col-span-6">
                   <BaseCard noPadding class="relative overflow-hidden">
@@ -624,9 +592,9 @@
                   </BaseCard>
                 </div>
               </div>
-            </TabPanel>
+            </TabPanel> -->
           </TabPanels>
-        </TabGroup> -->
+        </TabGroup>
       </div>
     </BaseCard>
   </div>
@@ -639,6 +607,7 @@ export default {
   data() {
     return {
       user: {},
+      statData: {},
     };
   },
   // computed:{
@@ -646,16 +615,17 @@ export default {
   //     return this.$store.getters.isLoggedIn;
   //   }
   // },
-computed: {
-  check () {
-    return this.$store.getters.isLoggedIn
-  }
-},
+  computed: {
+    check() {
+      return this.$store.getters.isLoggedIn;
+    },
+    totalStats() {
+      return this.$store.getters["totalStats/totalsStats"];
+    },
+  },
 
   async created() {
-    // if (!this.$store.getters.isLoggedIn) {
-    //   this.$router.push("/login");
-    // }
+    this.$store.dispatch("totalStats/fetchTotalStats");
     var config = {
       method: "get",
       url: "v1/admins/me",
@@ -664,15 +634,11 @@ computed: {
       },
     };
 
-    
-    
-    const that = this;
+    const self = this;
     axios(config)
       .then(function (response) {
-        that.user = response.data.data.doc;
-        console.log(that.check)
-        // console.log(token);
-       
+        self.user = response.data.data.doc;
+        console.log(self.check);
       })
       .catch(function (error) {
         console.log(error);
@@ -680,7 +646,6 @@ computed: {
   },
 };
 </script>
-
 
 <style lang="scss" scoped>
 .user-profile {

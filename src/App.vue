@@ -5,7 +5,7 @@
 export default{
     created(){
       if(!localStorage.getItem('token'))
-      this.$router.push('/signin')
+      this.$router.replace('/signin')
     }
 }
 </script>

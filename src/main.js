@@ -8,7 +8,7 @@ import BaseCard from './components/Base/BaseCard.vue'
 import BaseBtn from './components/Base/BaseBtn.vue'
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://zena-server.herokuapp.com/api';
+axios.defaults.baseURL = 'https://zena-api-dev.herokuapp.com/api';
 axios.defaults.headers.common['Authorization'] = `Bearer ${store.state.token}`;
 // axios.defaults.withCredentials = true;
 // perfect scrollbar plugins 

@@ -13,8 +13,8 @@
   >
     <div class="container-session-v1 max-w-2xl">
       <BaseCard noPadding class="overflow-hidden">
-        <div class="grid grid-cols-12">
-          <div class="col-span-12 lg:col-span-6">
+        <div class="grid grid-cols-6">
+          <div class="col-span-6 lg:col-span-6">
             <div class="p-5">
               <svg
                 class="fill-current text-purple-500 mx-auto"
@@ -84,6 +84,8 @@
               </svg>
               <h1 class="mb-3 text-lg">Sign In as an administrator</h1>
               <form action="">
+
+
                 <!--SIGN IN FORM-->
                 <div class="mb-3">
                   <!--USERNAME-->
@@ -104,6 +106,7 @@
                   />
                 </div>
                 <div class="mb-3">
+
                   <!--PASSWORD-->
                   <label class="text-xs text-gray-600" for="">Password</label>
                   <input
@@ -138,7 +141,7 @@
                     href="#"
                     >Forgot Password?</a
                   >
-                  <p>{{msg}}</p>
+                 
                 </div>
               </form>
             </div>
@@ -148,17 +151,20 @@
     </div>
   </div>
 </template>
+
+
 <script>
-import axios from "axios";
 import api from "@/controllers/api.js";
+import dashboards from "@/controllers/dashboards.js";
 export default {
   data() {
     return {
       email: "",
       password: "",
-      msg: "",
-      data:''
     };
+  },
+  created(){
+    dashboards.statisticalData();
   },
   
   methods: {
@@ -168,45 +174,16 @@ export default {
           email: this.email,
           password: this.password,
         };
-        const response = await api.login(credentials);
+        const response = await api.login(credentials)
         const token = response.token;
         const user = response.user;
-        this.$store.dispatch("login", { token, user });
+        this.$store.dispatch("login", { token, user});
         localStorage.setItem("token", token);
         this.$router.push("/");
       } catch (error) {
         // this.msg = error.response.data.msg;
       }
     },
-
-    // submitForm() {
-    //   var data = JSON.stringify({
-    //   email: this.email,
-    //   password: this.password,
-
-    // });
-
-    // var config = {
-    //   method: "post",
-    //   url: "/v1/admins/login",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   data: data,
-    // };
-    // const that = this;
-    // axios(config)
-    //   .then(function (response) {
-    //       if (response.status == 200) {
-    //       localStorage.setItem("token", response.data.token);
-    //       that.$router.push("/");
-
-    //     }
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-    // },
   },
 };
 </script>

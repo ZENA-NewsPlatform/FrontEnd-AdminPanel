@@ -13,13 +13,13 @@ export default {
 
   provide() {
     return {
-      addPublisher: this.addPublisher,
+      addData: this.addData,
     };
   },
 
   methods: {
-    addPublisher(input1, input2, input3) {
-      console.log(input1);
+    addData(input1, input2, input3) {
+      console.log(input1,input2,input3);
       var data = JSON.stringify({
         name: input1,
         email: input2,

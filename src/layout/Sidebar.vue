@@ -33,6 +33,8 @@ let handleWindowResize = () => {
   }
 };
 </script>
+
+
 <template>
   <div class="side-content-wrap">
     <div class="side-content-wrap">
@@ -55,7 +57,7 @@ let handleWindowResize = () => {
                             
                         ></div> -->
             <router-link
-              to="/dashboards/dashboard-version-one"
+              to="/dashboards/dashboard"
               tag="li"
               class="nav-item"
             >
@@ -76,19 +78,6 @@ let handleWindowResize = () => {
                 <p>Profile</p>
               </div>
             </router-link>
-            <router-link to="/signIn" tag="li" class="nav-item">
-              <div class="nav-item-hold">
-                <i class="i-Checked-User text-3xl"></i>
-                <p>Sign In</p>
-              </div>
-            </router-link>
-            <router-link to="/signUp" tag="li" class="nav-item">
-              <div class="nav-item-hold">
-                <i class="i-Checked-User text-3xl"></i>
-                <p>Sign Up</p>
-              </div>
-            </router-link>
-
             <router-link
               to= "/advertisements/list"
               tag="li"

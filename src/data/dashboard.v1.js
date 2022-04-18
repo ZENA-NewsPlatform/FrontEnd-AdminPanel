@@ -9,16 +9,24 @@ import {
 export const dashboardOne = {
     series: [
         {
-            name: 'Net Profit',
+            name: 'Sport',
             data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
         },
         {
-            name: 'Revenue',
+            name: 'Business',
             data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
+        },
+        {
+            name: 'Entertainment',
+            data: [43, 75, 10, 22, 19, 98, 11, 80, 64],
+        },
+        {
+            name: 'Technology',
+            data: [28, 33, 15, 22, 22, 11, 37, 42, 24],
         },
     ],
     chartOptions: {
-        colors: ['rgba(196, 181, 253, 1)', '#8b5cf6'],
+        colors: ['rgba(196, 181, 253, 1)', '#8b5cf6','#6b5cf6','#000'],
         chart: {
             type: 'bar',
 
@@ -60,7 +68,7 @@ export const dashboardOne = {
         tooltip: {
             y: {
                 formatter: function (val) {
-                    return '$ ' + val + ' thousands'
+                    return val + ' news'
                 },
             },
         },
@@ -120,10 +128,10 @@ export const dashboardOne = {
 // }
 
 export const dashboardTwo = {
-    series: [44, 55, 13, 43, 22],
+    series: [4100, 633, 477],
     chartOptions: {
         fill: {
-            colors: ['#EDE9FE', '#DDD6FE', '#8B5CF6', '#C4B5FD', '#A78BFA'],
+            colors: ['#DDD6FE', '#C4B5FD', '#A78BFA'],
         },
         chart: {
             height: 350,
@@ -135,6 +143,7 @@ export const dashboardTwo = {
         legend: {
             show: false,
         },
+        labels: ['Articles','Magazines','News papers'],
         // responsive: [
         //   {
         //     breakpoint: 480,

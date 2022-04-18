@@ -8,7 +8,7 @@ const routes = [
     path: "/",
     name: "Home",
     component: () => import("../layout/index.vue"),
-    redirect: "/dashboards/dashboard-version-one",
+    redirect: "/dashboards/dashboard",
     meta: {
       title: "Home",
     },
@@ -23,9 +23,9 @@ const routes = [
         },
         children: [
           {
-            path: "dashboard-version-one",
-            name: "dashboard-version-one",
-            component: () => import("../views/dashboards/Dashboards.v1.vue"),
+            path: "dashboard",
+            name: "dashboard",
+            component: () => import("../views/dashboards/Dashboards.vue"),
           },
         ],
       },

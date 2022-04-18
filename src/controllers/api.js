@@ -1,5 +1,4 @@
 import axios from "axios";
-// const url = 'http://localhost:3000/api/';
 export default {
   login(credentials) {
     return axios
@@ -19,21 +18,14 @@ export default {
   //         })
   // },
 
-  getSecretContent(user) {
-    var config = {
-      method: "get",
-      url: "v1/admins/me",
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    };
-    const that = this;
-    axios(config)
-      .then(function (response) {
-        that.user = response.data.data.doc;
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  },
+  getSecretContent() {
+    return axios
+    .get("/api/v1/systemStats")
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
 };

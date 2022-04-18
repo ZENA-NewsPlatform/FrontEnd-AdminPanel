@@ -1,7 +1,7 @@
 <template>
   <BaseCard>
-    <div class="grid grid-cols-12">
-      <div class="col-span-12 lg:col-span-6">
+    <div class="grid grid-cols-6">
+      <div class="col-span-6 lg:col-span-6">
         <div class="p-5">
           <h1 class="mb-3 text-lg"><slot name="formTitle">Title</slot></h1>
           <form action="" >
@@ -114,14 +114,10 @@
 
 <script>
 export default {
-  inject:['addPublisher'],
+  inject:['addData'],
   data() {
     return {
-      // input1: "",
-      // input2: "",
-      // input3:"",
-      // input4:"",
-      // newD:"Dagi"
+      
       
     };
   },
@@ -132,7 +128,7 @@ export default {
       const input1 = this.$refs.input1.value;
       const input2 = this.$refs.input2.value;
       const input3 = this.$refs.input3.value;
-      this.addPublisher(input1,input2,input3);
+      this.addData(input1,input2,input3);
       },
 
    

@@ -19,9 +19,6 @@
             onerror="if (this.src != 'error.jpg') this.src = '/images/faces/dummy-profile.jpg';"
           />
           <p class="text-2xl">{{ user.name }}</p>
-          <div v-for="totalStat in totalStats" :key="totalStat.id">
-            <p>{{ totalStat.statType }}</p>
-          </div>
           <p class="text-gray-600">{{ user.type }}</p>
         </div>
       </div>
@@ -601,50 +598,19 @@
 </template>
 
 <script>
-import axios from "axios";
 
 export default {
-  data() {
-    return {
-      user: {},
-      statData: {},
-    };
-  },
-  // computed:{
-  //   token(){
-  //     return this.$store.getters.isLoggedIn;
-  //   }
-  // },
-  computed: {
-    check() {
-      return this.$store.getters.isLoggedIn;
-    },
-    totalStats() {
-      return this.$store.getters["totalStats/totalsStats"];
-    },
-  },
-
   async created() {
-    this.$store.dispatch("totalStats/fetchTotalStats");
-    var config = {
-      method: "get",
-      url: "v1/admins/me",
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    };
+    this.$store.dispatch("profile/fetchAdminData");
+  },
 
-    const self = this;
-    axios(config)
-      .then(function (response) {
-        self.user = response.data.data.doc;
-        console.log(self.check);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  computed: {
+    user() {
+      return this.$store.getters["profile/adminData"];
+    },
   },
 };
+
 </script>
 
 <style lang="scss" scoped>

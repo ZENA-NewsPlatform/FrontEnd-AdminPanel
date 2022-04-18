@@ -84,27 +84,14 @@
         </div>
       </div>
 
-      <!-- EDITOR"S TABLE OF REPORT -->
-      <ReportTable :users="users">
-       <!-- TABLE HEADERS -->
-       <template v-slot:th1>NAME</template>  
-       <template v-slot:th2>TYPE</template>
-       <template v-slot:th3>STATUS</template>
-       <template v-slot:th4>TOTAL POSTS</template>
-       <template v-slot:th5>START DATE</template>
-       <template v-slot:th6>OPERATIONS</template>
-  
-     </ReportTable>
+     
 
 </template>
 
 <script>
-import ReportTable from '../../components/utilities/ReportTable.vue'
 
 export default {
-  components:{
-    ReportTable,
-  }
+  
 
   
   }

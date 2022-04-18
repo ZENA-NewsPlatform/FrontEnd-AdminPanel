@@ -154,8 +154,7 @@
 
 
 <script>
-import api from "@/controllers/api.js";
-import dashboards from "@/controllers/dashboards.js";
+import auth from "@/controllers/auth.js";
 export default {
   data() {
     return {
@@ -164,7 +163,7 @@ export default {
     };
   },
   created(){
-    dashboards.statisticalData();
+    
   },
   
   methods: {
@@ -174,14 +173,14 @@ export default {
           email: this.email,
           password: this.password,
         };
-        const response = await api.login(credentials)
+        const response = await auth.login(credentials)
         const token = response.token;
         const user = response.user;
         this.$store.dispatch("login", { token, user});
         localStorage.setItem("token", token);
         this.$router.push("/");
       } catch (error) {
-        // this.msg = error.response.data.msg;
+        console.log(error);
       }
     },
   },

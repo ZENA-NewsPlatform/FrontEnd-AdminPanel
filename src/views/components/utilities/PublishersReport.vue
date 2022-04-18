@@ -446,7 +446,7 @@ export default {
 
   computed: {
     users() {
-      return this.$props.publishers;
+      return this.$store.getters['publisher/publishers'];
     },
     
   

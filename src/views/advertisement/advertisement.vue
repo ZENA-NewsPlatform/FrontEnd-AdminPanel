@@ -1,7 +1,8 @@
 <template>
+  <!-- ADVERTISEMENTS TABLE HEAD -->
   <TableHead>
     <template v-slot:table-title>Advertisement's List</template>
-    <template v-slot:results-counter>{{resultsCounter}}</template>
+    <template v-slot:results-counter>{{ resultsCounter }}</template>
     <template v-slot:report-filter>
       <ReportFilter
         :filterData="filterPublishers"
@@ -42,50 +43,33 @@
       </router-link>
     </template>
   </TableHead>
+
   <!-- ADVERTISEMENTS TABLE -->
-
-  <AdsReport :ads="ads" ></AdsReport>
-
+  <AdsReport></AdsReport>
 </template>
 
 <script>
-import axios from "axios";
 import AdsReport from "../components/utilities/AdsReport.vue";
 import TableHead from "../components/utilities/TableHead.vue";
 import ReportFilter from "../components/utilities/ReportFilter.vue";
 
 export default {
-  data() {
-    return {
-      ads: {},
-      resultsCounter:0
-    };
-  },
   components: {
     AdsReport,
     TableHead,
     ReportFilter,
   },
-  created() {
-    var config = {
-      method: "get",
-      url: "/v1/advertisements",
-      headers: {
-     
-          },
-    };
 
-    const that = this;
-    axios(config)
-      .then(function (response) {
-        console.log(JSON.stringify(response.data));
-        that.resultsCounter = response.data.results
-        that.ads = response.data.data.advertisement;
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  created() {
+    this.$store.dispatch("advertisement/fetchAd");
   },
+
+  computed: {
+    resultsCounter() {
+      return this.$store.getters["advertisement/resultsCounter"];
+    },
+  },
+  
 };
 </script>
 

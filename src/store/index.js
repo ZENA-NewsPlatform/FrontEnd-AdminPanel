@@ -2,9 +2,11 @@ import { createStore } from "vuex";
 import axios from 'axios';
 import largeSidebar from "./modules/largeSidebar";
 import accounts from "./modules/admin/accounts";
-import totalStats from "./modules/statistics/totalStats"
-
-
+import totalStats from "./modules/statistics/totalStats";
+import dailyStats from "./modules/statistics/dailyStats";
+import profile from './modules/profile/adminProfile';
+import advertisement from './modules/advertisement/advertisement'
+import publisher from './modules/publisher/publisher'
 
 const getDefaultState = () => {
   return {
@@ -28,7 +30,7 @@ export default createStore({
   },
 
   actions: {
-    
+
     login: ({ commit }, { token, user}) => {
       commit("SET_TOKEN", token);
       commit("SET_USER", user);
@@ -52,6 +54,10 @@ export default createStore({
   modules: {
     largeSidebar,
     accounts,
-    totalStats
+    totalStats,
+    dailyStats,
+    profile,
+    advertisement,
+    publisher
   },
 });

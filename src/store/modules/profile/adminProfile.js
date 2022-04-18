@@ -1,43 +1,43 @@
 import axios from "axios";
 var auth = "Bearer " + localStorage.getItem("token");
-var configTotal = {
+var config = {
   method: "get",
-  url: "v1/systemStats",
+  url: "v1/admins/me",
   headers: {
     Authorization: auth,
   },
 };
 
-const totalStats = {
+
+const adminData = {
   namespaced: true,
   state: {
-    dailyStats: {}
+    adminData: {},
   },
 
   getters: {
-    totalStats: (state) => state.totalStats,
-     },
+    adminData: (state) => state.adminData,
+  },
 
   mutations: {
-    FETCH_TOTAL_STATS: (state, totalStats) => (state.totalStats = totalStats),
-     },
+    FETCH_ADMIN_DATA: (state, adminData) => (state.adminData = adminData),
+  },
 
   actions: {
     //A mutation committed to an action that fetches the total stats
-    async fetchTotalStats({ commit }) {
-      axios(configTotal)
+    async fetchAdminData({ commit }) {
+      axios(config)
         .then(function (response) {
           console.log(JSON.stringify(response.data.data.doc));
-          commit("FETCH_TOTAL_STATS", response.data.data.doc);
+          commit("FETCH_ADMIN_DATA", response.data.data.doc);
         })
         .catch(function (error) {
           console.log(error);
         });
     },
-
   },
 
 
 };
 
-export default totalStats;
+export default adminData;

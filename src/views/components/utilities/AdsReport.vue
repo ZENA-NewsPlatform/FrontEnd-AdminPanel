@@ -430,25 +430,16 @@
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
 import { ref } from "vue";
 export default {
-  props: ["ads"],
-
-  data() {
-    return {
-    };
-  },
-
   components: {
     Menu,
     MenuButton,
     MenuItems,
     MenuItem,
   },
-
-
   computed:{
-      ads(){
-          return this.$props.ads
-      }
+    ads() {
+      return this.$store.getters["advertisement/adData"];
+    },
   }
 
   

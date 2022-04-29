@@ -5,11 +5,6 @@ import {
     randomizeArray,
     sparklineData,
 } from '@/data/apexDataSeries'
-// import { useStore } from "vuex";
-// let store = useStore();
-
-// store.dispatch("totalStats/fetchTotalStats");
-// const statistics = computed(() => store.getters["totalStats/totalStats"]);
 
 export const dashboardOne = {
     series: [

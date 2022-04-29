@@ -2,7 +2,7 @@ import axios from "axios";
 var auth = "Bearer " + localStorage.getItem("token");
 var configTotal = {
   method: "get",
-  url: "v1/systemStats",
+  url: "v1/systemStats?statType=total",
   headers: {
     Authorization: auth,
   },
@@ -11,7 +11,7 @@ var configTotal = {
 const totalStats = {
   namespaced: true,
   state: {
-    dailyStats: {},
+    totalStats: {},
   },
 
   getters: {

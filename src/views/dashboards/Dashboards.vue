@@ -13,9 +13,29 @@ import { useStore } from "vuex";
 let store = useStore();
 onMounted(() => {
   store.dispatch("totalStats/fetchTotalStats");
+  console.log(dataOne);
 });
 const statistics = computed(() => store.getters["totalStats/totalStats"]);
-//  const totalStatistics = computed( ()=> statistics.filter(statistics=>statistics.statType="total"))
+
+const dataOne = statistics;
+let categoriesData = [
+  {
+    name: "Global",
+    data: [12, 55, 57, 56, 61, 58, 63, 60, 66, 52, 61, 44],
+  },
+  {
+    name: "Business",
+    data: [76, 85, 101, 98, 87, 105, 91, 114, 94, 58, 63, 60],
+  },
+  {
+    name: "Entertainment",
+    data: [43, 75, 10, 22, 19, 98, 11, 80, 64, 37, 42, 24],
+  },
+  {
+    name: "Technology",
+    data: [28, 33, 15, 22, 22, 11, 37, 42, 24, 98, 11, 80],
+  },
+];
 </script>
 
 <template>
@@ -156,7 +176,6 @@ const statistics = computed(() => store.getters["totalStats/totalStats"]);
           </BaseCard>
         </div>
 
-
         <!-- TOTAL EARNINGS  -->
         <div
           class="
@@ -178,8 +197,7 @@ const statistics = computed(() => store.getters["totalStats/totalStats"]);
           </BaseCard>
         </div>
 
-
-         <!-- REPORTED ISSUES -->
+        <!-- REPORTED ISSUES -->
         <div
           class="
             col-span-12
@@ -210,7 +228,7 @@ const statistics = computed(() => store.getters["totalStats/totalStats"]);
               type="bar"
               height="255"
               :options="dashboardOne.chartOptions"
-              :series="dashboardOne.series"
+              :series="categoriesData"
             ></apexchart>
           </BaseCard>
         </div>

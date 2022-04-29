@@ -10,16 +10,11 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://zena-api-dev.herokuapp.com/api';
 axios.defaults.headers.common['Authorization'] = `Bearer ${store.state.token}`;
-// axios.defaults.withCredentials = true;
-// perfect scrollbar plugins 
 import PerfectScrollbar from 'vue3-perfect-scrollbar'
 import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css'
 import VueApexCharts from "vue3-apexcharts";
 
 // globally call 
-
-
-
 createApp(App)
     .component('BaseCard', BaseCard)
     .component('BaseBtn', BaseBtn)

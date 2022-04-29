@@ -40,9 +40,9 @@
               /> -->
             <div class="px-4">
               <div>
-                <a href="#" class="text-gray-600 font-bolder">{{
+                <router-link to="/advertisements/currentAd" class="text-gray-600 font-bolder">{{
                   ad.link
-                }}</a>
+                }}</router-link>
               </div>
             </div>
           </td>

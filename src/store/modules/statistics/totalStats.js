@@ -11,20 +11,20 @@ var configTotal = {
 const totalStats = {
   namespaced: true,
   state: {
-    dailyStats: {}
+    dailyStats: {},
   },
 
   getters: {
     totalStats: (state) => state.totalStats,
-     },
+  },
 
   mutations: {
     FETCH_TOTAL_STATS: (state, totalStats) => (state.totalStats = totalStats),
-     },
+  },
 
   actions: {
     //A mutation committed to an action that fetches the total stats
-    async fetchTotalStats({ commit }) {
+    async fetchTotalStats({commit}) {
       axios(configTotal)
         .then(function (response) {
           console.log(JSON.stringify(response.data.data.doc));
@@ -34,10 +34,7 @@ const totalStats = {
           console.log(error);
         });
     },
-
   },
-
-
 };
 
 export default totalStats;

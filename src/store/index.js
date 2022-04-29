@@ -5,9 +5,10 @@ import accounts from "./modules/admin/accounts";
 import totalStats from "./modules/statistics/totalStats";
 import dailyStats from "./modules/statistics/dailyStats";
 import profile from './modules/profile/adminProfile';
-import advertisement from './modules/advertisement/advertisement'
-import publisher from './modules/publisher/publisher'
-
+import advertisement from './modules/advertisement/advertisement';
+import publisher from './modules/publisher/publisher';
+import publisherIndividual from './modules/publisher/publisherIndividual'
+import adIndividual from "./modules/advertisement/advertisementIndividual"
 const getDefaultState = () => {
   return {
     token: "",
@@ -58,6 +59,8 @@ export default createStore({
     dailyStats,
     profile,
     advertisement,
-    publisher
+    publisher,
+    publisherIndividual,
+    adIndividual
   },
 });

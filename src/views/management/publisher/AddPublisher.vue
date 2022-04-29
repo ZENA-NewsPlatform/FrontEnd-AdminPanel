@@ -1,12 +1,16 @@
 <template>
-  <AddForm></AddForm>
+  <AddForm>
+    <template v-slot:label1>Name</template>
+    <template v-slot:label2>Email</template>
+    <template v-slot:label3>Description</template>
+    <template v-slot:label4>Logo</template>
+  </AddForm>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 import AddForm from "../../components/utilities/AddForm.vue";
 export default {
-
   components: {
     AddForm,
   },
@@ -19,7 +23,7 @@ export default {
 
   methods: {
     addData(input1, input2, input3) {
-      console.log(input1,input2,input3);
+      console.log(input1, input2, input3);
       var data = JSON.stringify({
         name: input1,
         email: input2,
@@ -29,7 +33,7 @@ export default {
 
       var config = {
         method: "post",
-        url: "v1/publisherChannels",
+        url: "v1/publisherChannel",
         headers: {
           "Content-Type": "application/json",
         },

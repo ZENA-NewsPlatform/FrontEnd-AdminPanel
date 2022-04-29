@@ -47,6 +47,14 @@ const routes = [
             },
           },
           {
+            path: "currentPublisher",
+            name: "current publisher",
+            component: () => import("../views/management/publisher/IndividualPublisher.vue"),
+            meta: {
+              title: "Current Publisher"
+            }
+          },
+          {
             path: "newPublisher",
             name: "new publisher",
             component: () =>
@@ -125,7 +133,14 @@ const routes = [
               title: "Advertisements",
             },
           },
-
+          {
+            path: "currentAd",
+            name: "current advertisement",
+            component: () => import("../views/advertisement/IndividualAd.vue"),
+            meta: {
+              title: "Current Advertisement",
+            },
+          },
           {
             path: "newAd",
             name: "new advertisement",
@@ -137,6 +152,155 @@ const routes = [
           },
         ],
       },
+
+      {
+        path: "/categories",
+        name: "categories",
+        component: () => import("../views/categories/index.vue"),
+        meta: {
+          title: "Categories",
+        },
+        children: [
+          {
+            path: "list",
+            name: "categoriesList",
+            component: () => import("../views/categories/CategoriesList.vue"),
+            meta: {
+              title: "Categories List",
+            },
+          },
+          {
+            path: "detail",
+            name: "categoriesDetail",
+            component: () => import("../views/categories/CategoryDetail.vue"),
+            meta: {
+              title: "Category Detail",
+            },
+          },
+        
+        ],
+      },
+
+      {
+        path: "/providers",
+        name: "providers",
+        component: () => import("../views/providers/index.vue"),
+        meta: {
+          title: "Providers",
+        },
+        children: [
+          {
+            path: "list",
+            name: "providersList",
+            component: () => import("../views/providers/ProvidersList.vue"),
+            meta: {
+              title: "Categories List",
+            },
+          },
+          {
+            path: "detail",
+            name: "providerDetail",
+            component: () => import("../views/providers/ProviderDetail.vue"),
+            meta: {
+              title: "Provider Detail",
+            },
+          },
+        
+        ],
+      },
+
+      {
+        path: "/reports",
+        name: "reports",
+        component: () => import("../views/reports/index.vue"),
+        meta: {
+          title: "Reports",
+        },
+        children: [
+          {
+            path: "list",
+            name: "reportsList",
+            component: () => import("../views/reports/ReportsList.vue"),
+            meta: {
+              title: "Reports List",
+            },
+          },
+          {
+            path: "detail",
+            name: "reportDetail",
+            component: () => import("../views/reports/ReportDetail.vue"),
+            meta: {
+              title: "Report Detail",
+            },
+          },
+        
+        ],
+      },
+
+      {
+        path: "/verifyPublishers",
+        name: "verifyPublishers",
+        component: () => import("../views/verifyPublishers/index.vue"),
+        meta: {
+          title: "Verify Publishers",
+        },
+        children: [
+          {
+            path: "list",
+            name: "verifyPublishersList",
+            component: () => import("../views/verifyPublishers/VerifyPublishers.vue"),
+            meta: {
+              title: "Verify List",
+            },
+          },
+          {
+            path: "detail",
+            name: "verifyPublisherDetail",
+            component: () => import("../views/verifyPublishers/VerifyDetail.vue"),
+            meta: {
+              title: "Verify Detail",
+            },
+          },
+        
+        ],
+      },
+
+
+      {
+        path: "/settings",
+        name: "settings",
+        component: () => import("../views/settings/index.vue"),
+        meta: {
+          title: "Settings",
+        },
+        children: [
+          {
+            path: "generalSettings",
+            name: "generalSettings",
+            component: () => import("../views/settings/GeneralSettings.vue"),
+            meta: {
+              title: "General Settings",
+            },
+          },
+          {
+            path: "socialLinks",
+            name: "socialLinks",
+            component: () => import("../views/settings/SocialLinks.vue"),
+            meta: {
+              title: "Social Links",
+            },
+          },
+          {
+            path: "customization",
+            name: "customization",
+            component: () => import("../views/settings/Customization.vue"),
+            meta: {
+              title: "Customization",
+            },
+          },
+        ],
+      },
+      
     ],
   },
 
@@ -159,11 +323,10 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.name !== "signIn" && !localStorage.getItem('token')) next({ name: "signIn" });
-  else 
-  document.title = `${to.meta.title}`;
+  if (to.name !== "signIn" && !localStorage.getItem("token"))
+    next({ name: "signIn" });
+  else document.title = `${to.meta.title}`;
   next();
- 
 });
 
 router.afterEach(() => {

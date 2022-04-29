@@ -1,26 +1,27 @@
 <template>
-  <div class="relative text-lg w-48">
+  <div class="relative text-lg text-gray-400 w-48">
     <button
       class="
         flex
         items-center
         justify-between
         px-3
-        py-2
+        py-1.5
         bg-white
         w-full
-        border border-gray-500
+        border border-orange-900
         rounded-lg
+        text-gray-400
       "
       @click="isOptionsExpanded = !isOptionsExpanded"
       @blur="isOptionsExpanded = false"
     >
-      <span>{{ selectedOption }}</span>
+      <span class="text-gray-400">{{ selectedOption }}</span>
       <svg
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
-        class="h-4 w-4 transform transition-transform duration-200 ease-in-out"
+        class="h-4 w-4 transform transition-transform duration-200 text-gray-400 ease-in-out"
         :class="isOptionsExpanded ? 'rotate-180' : 'rotate-0'"
       >
         <path
@@ -43,6 +44,7 @@
         v-show="isOptionsExpanded"
         class="
           absolute
+          text-grey-900
           left-0
           right-0
           mb-4

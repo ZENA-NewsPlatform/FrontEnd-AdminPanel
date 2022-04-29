@@ -1,9 +1,9 @@
 <template>
   <table class="w-full mt-2 text-gray-500">
-    <thead class="border-b">
+    <thead class="border-b ml-5">
       <!--Table head or the first row of the table -->
       <tr>
-        <th class="p-2 text-left text-gray-600"><!--Table headers--></th>
+        <th class="p-0 pl-4 text-left text-gray-600"><!--Table headers--></th>
         <th class="text-left text-gray-600"><slot name="th1">HEADER1</slot></th>
         <th class="text-left text-gray-600"><slot name="th2">HEADER2</slot></th>
         <th class="text-left text-gray-600"><slot name="th3">HEADER3</slot></th>
@@ -33,18 +33,20 @@
             />
           </td>
           <td class="flex items-center py-4">
-            <!-- <img
+           
+            <div class="pr-4">
+              <div>
+                <router-link to="/management/currentPublisher" class="text-gray-600 font-bolder">{{
+                  user.name
+                }}</router-link>
+              </div>
+            </div>
+
+             <!-- <img
                 class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                 :src="user.avatar"
                 alt=""
               /> -->
-            <div class="px-4">
-              <div>
-                <a href="#" class="text-gray-600 font-bolder">{{
-                  user.name
-                }}</a>
-              </div>
-            </div>
           </td>
           <td>{{ user.priceType }}</td>
           <td>

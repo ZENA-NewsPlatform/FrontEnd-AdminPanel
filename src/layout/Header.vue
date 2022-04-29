@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, watch, watchEffect } from "vue";
+import { onMounted,computed, ref, watch, watchEffect } from "vue";
 import { Switch } from "@headlessui/vue";
 import HeaderSearch from "../components/HeaderSearch.vue";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
@@ -10,6 +10,12 @@ let store = useStore();
 let route = useRouter();
 let toggler= false;
 
+onMounted(() => {
+  store.dispatch("totalStats/fetchTotalStats");
+  store.dispatch("profile/fetchAdminData");
+});
+const user = computed(() => store.getters["profile/adminData"]);
+
 const sideBarToggle = () => {
   let sidenav = store.state.largeSidebar.sidebarToggleProperties.isSideNavOpen;
 
@@ -19,6 +25,7 @@ const sideBarToggle = () => {
     store.commit("largeSidebar/toggleSidebarProperties");
   }
 };
+
 function toggleModal() {
     toggler = true;
 };
@@ -29,6 +36,8 @@ const logout = () => {
   localStorage.removeItem("token");
   route.replace("/signin");
 };
+
+
 </script>
 
 <template>
@@ -175,7 +184,7 @@ const logout = () => {
             focus:outline-none
           "
         >
-          <!-- <div class="">
+          <div class="">
                         <MenuItem
                             v-for="(item, index) in 4"
                             :key="index"
@@ -191,7 +200,7 @@ const logout = () => {
                             >
                                 <div class="flex flex-1 justify-between">
                                     <div>
-                                        <h6>New Message</h6>
+                                        <h6>New Issue reported</h6>
                                         <p
                                             :class="[
                                                 active
@@ -199,7 +208,7 @@ const logout = () => {
                                                     : 'text-gray-500',
                                             ]"
                                         >
-                                            How are you ?
+                                            Issue one 
                                         </p>
                                     </div>
                                     <div>
@@ -216,10 +225,10 @@ const logout = () => {
                                 </div>
                             </button>
                         </MenuItem>
-                    </div> -->
+                    </div>
         </MenuItems>
       </Menu>
-
+js
       <!-- PROFILE-DROPDOWN  -->
       <Menu as="div" class="relative inline-block text-left">
         <div>
@@ -236,7 +245,7 @@ const logout = () => {
           >
             <img
               class="avatar rounded-full"
-              src="/images/faces/dummy-profile.jpg"
+              :src="user.photo"
               alt=""
             />
           </MenuButton>

@@ -5,24 +5,29 @@ import {
     randomizeArray,
     sparklineData,
 } from '@/data/apexDataSeries'
+// import { useStore } from "vuex";
+// let store = useStore();
+
+// store.dispatch("totalStats/fetchTotalStats");
+// const statistics = computed(() => store.getters["totalStats/totalStats"]);
 
 export const dashboardOne = {
     series: [
         {
             name: 'Sport',
-            data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
+            data: [44, 55, 57, 56, 61, 58, 63, 60, 66,52,61,44],
         },
         {
             name: 'Business',
-            data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
+            data: [76, 85, 101, 98, 87, 105, 91, 114, 94, 58, 63, 60],
         },
         {
             name: 'Entertainment',
-            data: [43, 75, 10, 22, 19, 98, 11, 80, 64],
+            data: [43, 75, 10, 22, 19, 98, 11, 80, 64, 37, 42, 24],
         },
         {
             name: 'Technology',
-            data: [28, 33, 15, 22, 22, 11, 37, 42, 24],
+            data: [28, 33, 15, 22, 22, 11, 37, 42, 24 , 98, 11, 80],
         },
     ],
     chartOptions: {
@@ -51,6 +56,7 @@ export const dashboardOne = {
         },
         xaxis: {
             categories: [
+                'Jan',
                 'Feb',
                 'Mar',
                 'Apr',
@@ -60,6 +66,9 @@ export const dashboardOne = {
                 'Aug',
                 'Sep',
                 'Oct',
+                'Nov',
+                'Dec',
+                
             ],
         },
         fill: {

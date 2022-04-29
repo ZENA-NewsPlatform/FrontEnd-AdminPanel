@@ -68,7 +68,7 @@ let handleWindowResize = () => {
             </router-link>
             <router-link to="/management/publisher" tag="li" class="nav-item">
               <div class="nav-item-hold">
-                <i class="i-Settings text-3xl"></i>
+                <i class="i-Optimization text-3xl"></i>
                 <p>Management</p>
               </div>
             </router-link>
@@ -85,8 +85,52 @@ let handleWindowResize = () => {
              
             >
               <div class="nav-item-hold">
-                <i class="i-File-Word text-3xl"></i>
+                <i class="i-Movie-Ticket text-3xl"></i>
                 <p>Advertisements</p>
+              </div>
+            </router-link>
+            <router-link
+              to= "/categories/list"
+              tag="li"
+              class="nav-item"
+             
+            >
+              <div class="nav-item-hold">
+                <i class="i-Posterous text-3xl"></i>
+                <p>Categories</p>
+              </div>
+            </router-link>
+            <router-link
+              to= "/providers/list"
+              tag="li"
+              class="nav-item"
+             
+            >
+              <div class="nav-item-hold">
+                <i class="i-Shop text-3xl"></i>
+                <p>Providers</p>
+              </div>
+            </router-link>
+            <router-link
+              to= "/verifyPublishers/list"
+              tag="li"
+              class="nav-item"
+             
+            >
+              <div class="nav-item-hold">
+                <i class="i-Medal-3 text-3xl"></i>
+                <p>Verify Publishers</p>
+              </div>
+            </router-link>
+            <router-link
+              to= "/settings/generalSettings"
+              tag="li"
+              class="nav-item"
+             
+            >
+              <div class="nav-item-hold">
+                <i class="i-Gear text-3xl"></i>
+                <p>Settings</p>
               </div>
             </router-link>
           </ul>

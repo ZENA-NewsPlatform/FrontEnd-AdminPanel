@@ -1,7 +1,7 @@
 <template>
-  <div class="flex justify-between px-4 mt-4 sm:px-8">
-    <h2 class="text-2xl text-gray-600">
-      <slot name="table-title">Table's title</slot>
+  <div class="flex justify-between px-4 mt-0 ml-10 sm:px-8">
+    <h2 class="text-2xl text-gray-600 font-bold">
+      <slot name="table-title"></slot>
     </h2>
     <div class="flex items-center space-x-1 text-xs">
       <svg
@@ -20,20 +20,15 @@
       </svg>
     </div>
   </div>
-  <div>
-    <h4 class="text-sm pl-8"><slot name="results-counter">counter</slot></h4>
+  <div class="ml-8">
+    <h4 class="text-sm text-gray-400"><slot name="results-counter"></slot></h4>
   </div>
   <!-- <AddPublisher v-if="creating"></AddPublisher> -->
 
-  <div class="p-4 mt-0 sm:px-8 sm:py-4">
-    <div class="text-black-400">
-      <slot name="report-filter">
-        
-      </slot>
-     
-    </div>
+  <div class="p-4 ml-1.5 mt-0 sm:px-8 sm:py-4 flex justify-between ">
 
-    <div class="p-4 bg-white rounded">
+    <!-- SEARCH -->
+    <div class="py-1.5 ml-8 mr-20 mt-0.5 bg-white rounded flex content-start">
       <div class="flex justify-between">
         <div>
           <div class="relative text-gray-400">
@@ -73,15 +68,19 @@
             />
           </div>
         </div>
+      </div>
 
-        <div>
-          <div>
-              <slot name="add-new">
-                  
-              </slot>
-           
-          </div>
-        </div>
+    </div>
+
+    <!-- FILTER -->
+    <div class="text-black-400 ml-80">
+      <slot name="report-filter"> </slot>
+    </div>
+
+    <!-- ADD -->
+    <div>
+      <div class="ml-2 ">
+        <slot name="add-new"> </slot>
       </div>
     </div>
   </div>

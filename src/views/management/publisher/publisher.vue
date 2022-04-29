@@ -1,13 +1,15 @@
 <template>
   <!-- TABLE HEAD -->
+  <Breadcrumbs parentTitle="Publishers" subParentTitle="Publishers List" />
+  
   <TableHead>
-    <template v-slot:table-title>Publisher's List</template>
-    <template v-slot:results-counter>{{resultsCounter}}</template>
+    <!-- <template class="m-2" v-slot:table-title>Publishers</template> -->
+    <!-- <template v-slot:results-counter >{{resultsCounter}}results</template> -->
     <template v-slot:report-filter>
       <ReportFilter
-        :filterData="filterPublishers"
+       
         :options="options"
-        class="ml-8"
+        class=""
       ></ReportFilter>
     </template>
     <template v-slot:add-new>
@@ -51,7 +53,7 @@
     <template v-slot:th2>TYPE</template>
     <template v-slot:th3>STATUS</template>
     <template v-slot:th4>TOTAL POSTS</template>
-    <template v-slot:th5>START DATE</template>
+    <template v-slot:th5>JOIN DATE</template>
     <template v-slot:th6>OPERATIONS</template>
   </PublishersReport>
 </template>
@@ -63,12 +65,11 @@ import PublishersReport from "../../components/utilities/PublishersReport.vue";
 import TableHead from "../../components/utilities/TableHead.vue";
 import ReportFilter from "../../components/utilities/ReportFilter.vue";
 import AddPublisher from "./AddPublisher.vue";
+import Breadcrumbs from "@/components/Breadcrumbs.vue";
 
 export default {
   data() {
     return {
-      users: {},
-      resultsCounter: 0,
       creating: false,
       options: ["free", "paid", "All"],
     };
@@ -82,6 +83,7 @@ export default {
     PublishersReport,
     ReportFilter,
     TableHead,
+    Breadcrumbs
   },
 
   async created() {

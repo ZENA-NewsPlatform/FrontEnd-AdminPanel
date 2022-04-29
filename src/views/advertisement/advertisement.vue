@@ -1,13 +1,13 @@
 <template>
   <!-- ADVERTISEMENTS TABLE HEAD -->
+   <Breadcrumbs parentTitle="Advertisements" subParentTitle="Advertisements List" />
+  
   <TableHead>
-    <template v-slot:table-title>Advertisement's List</template>
-    <template v-slot:results-counter>{{ resultsCounter }}</template>
     <template v-slot:report-filter>
       <ReportFilter
         :filterData="filterPublishers"
         :options="options"
-        class="ml-8"
+        
       ></ReportFilter>
     </template>
     <template v-slot:add-new>
@@ -52,12 +52,14 @@
 import AdsReport from "../components/utilities/AdsReport.vue";
 import TableHead from "../components/utilities/TableHead.vue";
 import ReportFilter from "../components/utilities/ReportFilter.vue";
+import Breadcrumbs from "@/components/Breadcrumbs.vue";
 
 export default {
   components: {
     AdsReport,
     TableHead,
     ReportFilter,
+    Breadcrumbs
   },
 
   created() {

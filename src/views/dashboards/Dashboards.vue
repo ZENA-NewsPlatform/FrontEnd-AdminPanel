@@ -11,14 +11,23 @@ import { ref, onMounted, computed } from "vue";
 import { useStore } from "vuex";
 
 let store = useStore();
+const isTotal=ref(true);
 onMounted(() => {
+  
   store.dispatch("totalStats/fetchTotalStats");
+  store.dispatch("totalStats/fetchDailyStats")
   console.log(dataOne);
 });
 const statistics = computed(() => store.getters["totalStats/totalStats"]);
 
 const dataOne = statistics;
-let categoriesData = [
+
+ function toggleTotal()
+  {
+    isTotal.value = !isTotal.value;
+    console.log("Clicked")
+  }
+let categoriesTotalData = [
   {
     name: "Global",
     data: [12, 55, 57, 56, 61, 58, 63, 60, 66, 52, 61, 44],
@@ -36,6 +45,26 @@ let categoriesData = [
     data: [28, 33, 15, 22, 22, 11, 37, 42, 24, 98, 11, 80],
   },
 ];
+let categoriesWeeklyData = [
+  {
+    name: "Global",
+    data: [12, 55, 57, 56, 61, 58, 63],
+  },
+  {
+    name: "Business",
+    data: [76, 85, 101, 98, 87, 105, 91],
+  },
+  {
+    name: "Entertainment",
+    data: [43, 75, 10, 22, 19, 98, 11],
+  },
+  {
+    name: "Technology",
+    data: [28, 33, 15, 22, 22, 11, 37],
+  },
+ 
+];
+
 </script>
 
 <template>
@@ -221,17 +250,30 @@ let categoriesData = [
         <!-- REPORT GRAPHS -->
 
         <!-- NEWS BY CATEGORIES -->
-        <div class="col-span-12 xl:col-span-8 md:col-span-6">
-          <BaseCard>
+         <button @click="toggleTotal">Total</button>
+         
+        <div  class="col-span-12 xl:col-span-8 md:col-span-6">
+          <BaseCard v-if="isTotal">
             <h4 class="card-title mb-4">News By Categories</h4>
             <apexchart
               type="bar"
               height="255"
-              :options="dashboardOne.chartOptions"
-              :series="categoriesData"
+              :options="dashboardOne.chartTotalOptions"
+              :series="categoriesTotalData"
+            ></apexchart>
+          </BaseCard>
+
+          <BaseCard v-else>
+            <h4 class="card-title mb-4">News By Categories</h4>
+             <apexchart
+              type="bar"
+              height="255"
+              :options="dashboardOne.chartWeeklyOptions"
+              :series="categoriesWeeklyData"
             ></apexchart>
           </BaseCard>
         </div>
+        
 
         <!-- NEWS BY TYPE -->
         <div class="col-span-12 xl:col-span-4 md:col-span-6">

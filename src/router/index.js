@@ -47,7 +47,7 @@ const routes = [
             },
           },
           {
-            path: "currentPublisher",
+            path: "currentPublisher/:id",
             name: "current publisher",
             component: () => import("../views/management/publisher/IndividualPublisher.vue"),
             meta: {

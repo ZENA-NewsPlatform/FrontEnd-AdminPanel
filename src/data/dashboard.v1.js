@@ -25,7 +25,7 @@ export const dashboardOne = {
             data: [28, 33, 15, 22, 22, 11, 37, 42, 24 , 98, 11, 80],
         },
     ],
-    chartOptions: {
+    chartTotalOptions: {
         colors: ['rgba(196, 181, 253, 1)', '#8b5cf6','#6b5cf6','#000'],
         chart: {
             type: 'bar',
@@ -77,7 +77,54 @@ export const dashboardOne = {
             },
         },
     },
+    chartWeeklyOptions: {
+        colors: ['rgba(196, 181, 253, 1)', '#8b5cf6','#6b5cf6','#000'],
+        chart: {
+            type: 'bar',
+
+            toolbar: {
+                show: false,
+            },
+        },
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '55%',
+                borderRadius: 10,
+            },
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        stroke: {
+            show: true,
+            width: 2,
+            colors: ['transparent'],
+        },
+        xaxis: {
+            categories: [
+                'Monday',
+                'Tuesday',
+                'Wednesday',
+                'Thursday',
+                'Friday',
+                'Saturday',
+                'Sunday',     
+            ],
+        },
+        fill: {
+            opacity: 1,
+        },
+        tooltip: {
+            y: {
+                formatter: function (val) {
+                    return val + ' news'
+                },
+            },
+        },
+    },
 }
+
 
 // export const dashboardOne = {
 //   series: [

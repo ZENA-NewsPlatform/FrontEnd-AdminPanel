@@ -1,7 +1,7 @@
 import axios from 'axios'
 var config ={
   method: 'get',
-  url: 'v1/publishers/623efb69e29eb2523c8beb0e',
+  url: 'v1/publisherChannels/id/623efb69e29eb2523c8beb0e',
   headers: { 
       
   }
@@ -14,7 +14,7 @@ const publisherIndividual = {
         id: 0,
       },
       getters: {
-        publishers: (state) => state.publisher,
+        publisher: (state) => state.publisher,
         id: (state) => state.id,
       },
       mutations: {

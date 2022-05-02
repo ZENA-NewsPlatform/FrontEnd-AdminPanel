@@ -36,7 +36,7 @@
            
             <div class="pr-4">
               <div>
-                <router-link to="/management/currentPublisher" class="text-gray-600 font-bolder">{{
+                <router-link :to="'/management/currentPublisher/'+user._id" class="text-gray-600 font-bolder">{{
                   user.name
                 }}</router-link>
               </div>

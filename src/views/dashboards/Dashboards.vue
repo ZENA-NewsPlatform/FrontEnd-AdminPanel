@@ -12,11 +12,14 @@ import { useStore } from "vuex";
 
 let store = useStore();
 const isTotal=ref(true);
+const loading = ref(false);
 onMounted(() => {
-  
+  loading.value=true;
   store.dispatch("totalStats/fetchTotalStats");
-  store.dispatch("totalStats/fetchDailyStats")
+  store.dispatch("totalStats/fetchDailyStats");
+  loading.value=false;
   console.log(dataOne);
+  
 });
 const statistics = computed(() => store.getters["totalStats/totalStats"]);
 
@@ -68,8 +71,12 @@ let categoriesWeeklyData = [
 </script>
 
 <template>
+  
   <div class="container mx-auto">
     <Breadcrumbs parentTitle="Dashboard" subParentTitle="Admin panel" />
+    <Dialog v-if="loading" class="z-50">
+      <Spinner :animation-duration="4000" :size="100" color="#eeeeee"></Spinner>
+    </Dialog>
     <div v-for="stat in statistics" :key="stat">
       <div class="grid grid-cols-12 gap-5">
         <!-- STATISTICAL REPORT SMALL CARDS WITH 12 COLUMNS -->

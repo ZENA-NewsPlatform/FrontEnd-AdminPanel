@@ -1,7 +1,9 @@
 <template>
   <!-- TABLE HEAD -->
   <Breadcrumbs parentTitle="Publishers" subParentTitle="Publishers List" />
-  
+  <Dialog v-if="isLoading" class="z-50">
+      <Spinner :animation-duration="4000" :size="60" color="#eeeeee"></Spinner>
+    </Dialog>
   <TableHead>
     <!-- <template class="m-2" v-slot:table-title>Publishers</template> -->
     <!-- <template v-slot:results-counter >{{resultsCounter}}results</template> -->
@@ -70,7 +72,7 @@ import Breadcrumbs from "@/components/Breadcrumbs.vue";
 export default {
   data() {
     return {
-      creating: false,
+      // loading: false,
       options: ["free", "paid", "All"],
     };
   },
@@ -85,9 +87,15 @@ export default {
     TableHead,
     Breadcrumbs
   },
+  computed:{
+    isLoading(){
+      return this.$store.getters["publisher/loading"]
+    }
+  },
 
   async created() {
-    this.$store.dispatch("publisher/fetchPublisher");
+    const loading = false;
+    this.$store.dispatch("publisher/fetchPublisher",{loading});
   },
   computed: {
     resultsCounter() {

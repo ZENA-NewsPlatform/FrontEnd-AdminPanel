@@ -6,7 +6,10 @@ import './assets/scss/global.scss'
 import './index.css'
 import BaseCard from './components/Base/BaseCard.vue'
 import BaseBtn from './components/Base/BaseBtn.vue'
+import Dialog from "./components/Dialog.vue"
+import Spinner from "./components/Spinner.vue"
 import axios from 'axios';
+
 
 axios.defaults.baseURL = 'https://zena-api-dev.herokuapp.com/api';
 axios.defaults.headers.common['Authorization'] = `Bearer ${store.state.token}`;
@@ -18,6 +21,8 @@ import VueApexCharts from "vue3-apexcharts";
 createApp(App)
     .component('BaseCard', BaseCard)
     .component('BaseBtn', BaseBtn)
+    .component('Dialog', Dialog)
+    .component('Spinner', Spinner)
     .use(PerfectScrollbar)
     .use(VueApexCharts)
     .use(store)

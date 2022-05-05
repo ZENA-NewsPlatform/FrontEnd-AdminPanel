@@ -1,4 +1,7 @@
 <template>
+    <Dialog v-if="loading" class="z-50">
+      <Spinner :animation-duration="4000" :size="60" color="#eeeeee"></Spinner>
+    </Dialog>
   <div
     class="
       auth-layout-wrap
@@ -160,6 +163,7 @@ export default {
     return {
       email: "",
       password: "",
+      loading: false
     };
   },
   created(){
@@ -169,6 +173,7 @@ export default {
   methods: {
     async submitForm() {
       try {
+        this.loading = true;
         const credentials = {
           email: this.email,
           password: this.password,
@@ -179,6 +184,8 @@ export default {
         this.$store.dispatch("login", { token, user});
         localStorage.setItem("token", token);
         this.$router.push("/");
+        this.loading = false;
+        
       } catch (error) {
         console.log(error);
       }

@@ -102,15 +102,12 @@
                   </div>
                   <BaseCard class="timeline-card">
                     <div class="mb-1">
-                      <strong class="mr-1">{{user.name}}</strong> updated his
-                      sattus
+                      <strong class="mr-1">{{user.name}}</strong>Added a new publisher channel
+                      
                       <p class="text-muted">16 hours ago</p>
                     </div>
                     <p class="my-4">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Modi dicta beatae illo illum iusto iste mollitia explicabo
-                      quam officia. Quas ullam, quisquam architecto aspernatur
-                      enim iure debitis dignissimos suscipit ipsa.
+                     Added EBS TV which is an article posting channel.
                     </p>
                     <div class="mb-3">
                       <a href="#" class="mr-2 hover:text-purple-500">Details</a>
@@ -149,12 +146,12 @@
                   </div>
                   <BaseCard class="timeline-card">
                     <div class="mb-1">
-                      <strong class="mr-1">New followers</strong>
+                      <strong class="mr-1">New Publishers</strong>
                       <p class="text-muted">2 days ago</p>
                     </div>
                     <p class="my-4">
-                      <a href="#" class="hover:text-purple-500">Henry krick</a>
-                      and 16 others followed you
+                      <a href="#" class="hover:text-purple-500">EBS TV</a>
+                      joined Zena news network
                     </p>
                     <div class="mb-3">
                       <a href="#" class="mr-1 hover:text-purple-500">Details</a>
@@ -566,7 +563,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-</style>
 .user-profile {
   .header-cover {
     background-image: url("../../../images/profile-bg.png");

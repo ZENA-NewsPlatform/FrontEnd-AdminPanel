@@ -134,7 +134,7 @@ const routes = [
             },
           },
           {
-            path: "currentAd",
+            path: "currentAd/:id",
             name: "current advertisement",
             component: () => import("../views/advertisement/IndividualAd.vue"),
             meta: {

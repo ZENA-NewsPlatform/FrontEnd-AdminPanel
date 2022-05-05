@@ -566,6 +566,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+</style>
 .user-profile {
   .header-cover {
     background-image: url("../../../images/profile-bg.png");

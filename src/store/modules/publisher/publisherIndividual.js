@@ -18,7 +18,7 @@ const publisherIndividual = {
         id: (state) => state.id,
       },
       mutations: {
-        FETCH_PUBLISHER: (state, publisher) => (state.publisher = publisher),
+        FETCH_PUBLISHER: (state, payload,publisher) => (state.publisher = publisher),
         ID_DATA: (state, id) =>
           (state.id = id),
       },
@@ -26,9 +26,10 @@ const publisherIndividual = {
         async fetchPublisher({commit}) {
           axios(config)
             .then(function (response) {
-              console.log(JSON.stringify(response.data));
-              commit("FETCH_PUBLISHER", response.data.data.doc);
-              commit("ID_DATA", response.data.data.doc.id);
+              // console.log(JSON.stringify(response.data));
+              commit("FETCH_PUBLISHER",payload,response.data.data.doc);
+              // console.log(payload);
+              // commit("ID_DATA", response.data.data.doc.id);
             })
             .catch(function (error) {
               console.log(error);

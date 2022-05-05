@@ -6,30 +6,51 @@ import {
   splineAreaWidgetThree,
 } from "@/data/dashboard.v1.js";
 import Breadcrumbs from "@/components/Breadcrumbs.vue";
+import ReportFilter from "../components/utilities/ReportFilter.vue";
 import { useRouter } from "vue-router";
 import { ref, onMounted, computed } from "vue";
 import { useStore } from "vuex";
 
 let store = useStore();
-const isTotal=ref(true);
+const isTotal = ref(true);
 const loading = ref(false);
+const filters = ref(["All", "Weekly"]);
+const activeFilter = ref("All");
+
 onMounted(() => {
-  loading.value=true;
+  loading.value = true;
   store.dispatch("totalStats/fetchTotalStats");
   store.dispatch("totalStats/fetchDailyStats");
-  loading.value=false;
+  loading.value = false;
   console.log(dataOne);
-  
 });
 const statistics = computed(() => store.getters["totalStats/totalStats"]);
-
+const category = computed(() => {
+      if (activeFilter.value === 'All') {
+        return categoriesTotalData;
+      }
+      else{
+      return categoriesWeeklyData;
+      }
+    });
+const chartOptions = computed(() => {
+      if (activeFilter.value === 'All') {
+        return dashboardOne.chartTotalOptions;
+      }
+      else{
+      return dashboardOne.chartWeeklyOptions;
+      }
+    });
 const dataOne = statistics;
 
- function toggleTotal()
-  {
-    isTotal.value = !isTotal.value;
-    console.log("Clicked")
-  }
+function toggleTotal() {
+  isTotal.value = !isTotal.value;
+  console.log("Clicked");
+}
+//Filter function
+function filterData(type) {
+  activeFilter.value = type;
+}
 let categoriesTotalData = [
   {
     name: "Global",
@@ -65,13 +86,10 @@ let categoriesWeeklyData = [
     name: "Technology",
     data: [28, 33, 15, 22, 22, 11, 37],
   },
- 
 ];
-
 </script>
 
 <template>
-  
   <div class="container mx-auto">
     <Breadcrumbs parentTitle="Dashboard" subParentTitle="Admin panel" />
     <Dialog v-if="loading" class="z-50">
@@ -257,30 +275,41 @@ let categoriesWeeklyData = [
         <!-- REPORT GRAPHS -->
 
         <!-- NEWS BY CATEGORIES -->
-         <button @click="toggleTotal">Total</button>
-         
-        <div  class="col-span-12 xl:col-span-8 md:col-span-6">
+        <button @click="toggleTotal">Total</button>
+
+        <!-- Filter Component -->
+        <div class="tags-wrapper">
+          <p v-for="(filter, index) in filters" :key="index">
+            <button
+              @click="filterData(filter)"
+              :class="{ active: filter === activeFilter }"
+              >{{ filter }}</button
+            >
+          </p>
+        </div>
+
+
+        <div class="col-span-12 xl:col-span-8 md:col-span-6">
           <BaseCard v-if="isTotal">
             <h4 class="card-title mb-4">News By Categories</h4>
             <apexchart
               type="bar"
               height="255"
-              :options="dashboardOne.chartTotalOptions"
-              :series="categoriesTotalData"
+              :options="chartOptions"
+              :series="category"
             ></apexchart>
           </BaseCard>
 
-          <BaseCard v-else>
+          <!-- <BaseCard v-else>
             <h4 class="card-title mb-4">News By Categories</h4>
-             <apexchart
+            <apexchart
               type="bar"
               height="255"
               :options="dashboardOne.chartWeeklyOptions"
               :series="categoriesWeeklyData"
             ></apexchart>
-          </BaseCard>
+          </BaseCard> -->
         </div>
-        
 
         <!-- NEWS BY TYPE -->
         <div class="col-span-12 xl:col-span-4 md:col-span-6">

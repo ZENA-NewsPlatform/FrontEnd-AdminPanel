@@ -1,10 +1,16 @@
 <template>
   <AddForm>
+    <template v-slot:formTitle>Add new publisher</template>
     <template v-slot:label1>Name</template>
     <template v-slot:label2>Email</template>
     <template v-slot:label3>Description</template>
     <template v-slot:label4>Logo</template>
+    <VueOption :options=options>
+      <template v-slot:Title>Select Publisher Type</template>
+    </VueOption>
   </AddForm>
+
+  
 </template>
 
 <script>
@@ -13,6 +19,12 @@ import AddForm from "../../components/utilities/AddForm.vue";
 export default {
   components: {
     AddForm,
+  },
+  data(){
+    return{
+      options:["Article","Magazine","NewsPaper"]
+     
+    }
   },
 
   provide() {

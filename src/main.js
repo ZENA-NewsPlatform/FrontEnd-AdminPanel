@@ -8,6 +8,7 @@ import BaseCard from './components/Base/BaseCard.vue'
 import BaseBtn from './components/Base/BaseBtn.vue'
 import Dialog from "./components/Dialog.vue"
 import Spinner from "./components/Spinner.vue"
+import VueOption from "./components/VueOptions.vue"
 import axios from 'axios';
 
 
@@ -23,6 +24,7 @@ createApp(App)
     .component('BaseBtn', BaseBtn)
     .component('Dialog', Dialog)
     .component('Spinner', Spinner)
+    .component('VueOption',VueOption)
     .use(PerfectScrollbar)
     .use(VueApexCharts)
     .use(store)

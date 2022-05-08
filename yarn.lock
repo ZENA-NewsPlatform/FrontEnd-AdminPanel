@@ -1035,6 +1035,11 @@
   "resolved" "https://registry.npmjs.org/csstype/-/csstype-2.6.17.tgz"
   "version" "2.6.17"
 
+"dayjs@^1.8.27":
+  "integrity" "sha512-F4LXf1OeU9hrSYRPTTj/6FbO4HTjPKXvEIC1P2kcnFurViINCVk3ZV0xAS3XVx9MkMsXbbqlK6hjseaYbgKEHw=="
+  "resolved" "https://registry.npmjs.org/dayjs/-/dayjs-1.11.2.tgz"
+  "version" "1.11.2"
+
 "debug@^3.2.7":
   "integrity" "sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ=="
   "resolved" "https://registry.npmjs.org/debug/-/debug-3.2.7.tgz"
@@ -3875,7 +3880,7 @@
     "string-width" "^4.2.0"
     "strip-ansi" "^6.0.0"
 
-"tailwindcss@^2.2.9":
+"tailwindcss@^2.0.0", "tailwindcss@^2.2.9":
   "integrity" "sha512-P8zCKFkEthfUvqcnun8DqGGXw4QqyDw971NAM23e8QQ+m5HW1agp4upq50rFGwGNtphVYvr+0zvVLSXo5/I9Qg=="
   "resolved" "https://registry.npmjs.org/tailwindcss/-/tailwindcss-2.2.9.tgz"
   "version" "2.2.9"
@@ -4169,12 +4174,22 @@
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.14"
 
+"vue-select@^4.0.0-beta.3":
+  "integrity" "sha512-sXufbTDluz26a39UUZE9jeh9Hojnn8zr9qDDUlVEBc7E0F+h3+Nzy8YzyFHuVNrrYLmK0zrPkb7hWFulAEW41Q=="
+  "resolved" "https://registry.npmjs.org/vue-select/-/vue-select-4.0.0-beta.3.tgz"
+  "version" "4.0.0-beta.3"
+
+"vue-tailwind-picker@^2.0.0":
+  "integrity" "sha512-o9b2XAKfIoVfZgjpJ824HpSduJJiPegKN8wwnbK7GpIEDEoMMajjOWlAU9QcSEVAFXJrgYeSXYbVhW28eOyrQw=="
+  "resolved" "https://registry.npmjs.org/vue-tailwind-picker/-/vue-tailwind-picker-2.0.0.tgz"
+  "version" "2.0.0"
+
 "vue@^2.6.10":
   "integrity" "sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-2.6.14.tgz"
   "version" "2.6.14"
 
-"vue@^3", "vue@^3.0.0", "vue@^3.0.2", "vue@^3.2.6", "vue@> 3.0.0", "vue@>= 3":
+"vue@^3", "vue@^3.0.0", "vue@^3.0.2", "vue@^3.2.6", "vue@> 3.0.0", "vue@>= 3", "vue@3.x":
   "integrity" "sha512-Zlb3LMemQS3Xxa6xPsecu45bNjr1hxO8Bh5FUmE0Dr6Ot0znZBKiM47rK6O7FTcakxOnvVN+NTXWJF6u8ajpCQ=="
   "resolved" "https://registry.npmjs.org/vue/-/vue-3.2.6.tgz"
   "version" "3.2.6"

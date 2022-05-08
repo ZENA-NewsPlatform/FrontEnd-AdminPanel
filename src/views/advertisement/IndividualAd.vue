@@ -87,8 +87,7 @@
           {{ name }}
         </h5>
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          Here are the biggest enterprise technology acquisitions of 2021 so
-          far, in reverse chronological order.
+          One Stop Ethiopia visa solution, Get your visa right now without any pre payment .
         </p>
       </div>
     </a>

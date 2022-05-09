@@ -4,10 +4,11 @@
     <template v-slot:label1>Name</template>
     <template v-slot:label2>Email</template>
     <template v-slot:label3>Description</template>
-    <template v-slot:label4>Logo</template>
     <VueOption :options=options>
       <template v-slot:Title>Select Publisher Type</template>
     </VueOption>
+    <template v-slot:label4>Logo</template>
+    
   </AddForm>
 
   
@@ -23,7 +24,6 @@ export default {
   data(){
     return{
       options:["Article","Magazine","NewsPaper"]
-     
     }
   },
 

@@ -26,21 +26,19 @@ onMounted(() => {
 });
 const statistics = computed(() => store.getters["totalStats/totalStats"]);
 const category = computed(() => {
-      if (activeFilter.value === 'All') {
-        return categoriesTotalData;
-      }
-      else{
-      return categoriesWeeklyData;
-      }
-    });
+  if (activeFilter.value === "All") {
+    return categoriesTotalData;
+  } else {
+    return categoriesWeeklyData;
+  }
+});
 const chartOptions = computed(() => {
-      if (activeFilter.value === 'All') {
-        return dashboardOne.chartTotalOptions;
-      }
-      else{
-      return dashboardOne.chartWeeklyOptions;
-      }
-    });
+  if (activeFilter.value === "All") {
+    return dashboardOne.chartTotalOptions;
+  } else {
+    return dashboardOne.chartWeeklyOptions;
+  }
+});
 const dataOne = statistics;
 
 function toggleTotal() {
@@ -275,23 +273,21 @@ let categoriesWeeklyData = [
         <!-- REPORT GRAPHS -->
 
         <!-- NEWS BY CATEGORIES -->
-        <button @click="toggleTotal">Total</button>
-
-        <!-- Filter Component -->
-        <div class="tags-wrapper">
-          <p v-for="(filter, index) in filters" :key="index">
-            <button
-              @click="filterData(filter)"
-              :class="{ active: filter === activeFilter }"
-              >{{ filter }}</button
-            >
-          </p>
-        </div>
-
 
         <div class="col-span-12 xl:col-span-8 md:col-span-6">
           <BaseCard v-if="isTotal">
             <h4 class="card-title mb-4">News By Categories</h4>
+            <!-- Filter Component -->
+            <div class=" inline-flex space-x-4">
+              <p v-for="(filter, index) in filters" :key="index">
+                <button
+                  @click="filterData(filter)"
+                  :class="{ active: filter === activeFilter }"
+                  class="bg-white hover:bg-gray-100 text-gray-800 focus:border-primary focus:text-primary font-semibold py-1.5 px-4 border border-gray-400 rounded shadow"               >                  {{ filter }}
+                </button>
+              </p>
+            </div>
+
             <apexchart
               type="bar"
               height="255"
@@ -315,6 +311,16 @@ let categoriesWeeklyData = [
         <div class="col-span-12 xl:col-span-4 md:col-span-6">
           <BaseCard>
             <h4 class="card-title mb-4">News By Type</h4>
+            <!-- Filter Component -->
+            <div class=" inline-flex space-x-4">
+              <p v-for="(filter, index) in filters" :key="index">
+                <button
+                  @click="filterData(filter)"
+                  :class="{ active: filter === activeFilter }"
+                  class="bg-white hover:bg-gray-100 text-gray-800 focus:border-primary focus:text-primary font-semibold py-1.5 px-4 border border-gray-400 rounded shadow"               >                  {{ filter }}
+                </button>
+              </p>
+            </div>
             <apexchart
               type="pie"
               height="290"

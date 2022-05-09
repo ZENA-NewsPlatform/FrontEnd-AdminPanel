@@ -9,6 +9,7 @@ import BaseBtn from './components/Base/BaseBtn.vue'
 import Dialog from "./components/Dialog.vue"
 import Spinner from "./components/Spinner.vue"
 import VueOption from "./components/VueOptions.vue"
+import MainLogo from "./components/logo.vue"
 import axios from 'axios';
 
 
@@ -25,6 +26,7 @@ createApp(App)
     .component('Dialog', Dialog)
     .component('Spinner', Spinner)
     .component('VueOption',VueOption)
+    .component('MainLogo',MainLogo)
     .use(PerfectScrollbar)
     .use(VueApexCharts)
     .use(store)

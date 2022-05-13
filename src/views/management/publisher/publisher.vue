@@ -51,12 +51,12 @@
   <!--PUBLISHER TABLE OF REPORT-->
   <PublishersReport>
     <!-- TABLE HEADERS -->
-    <template v-slot:th1>NAME</template>
-    <template v-slot:th2>TYPE</template>
-    <template v-slot:th3>STATUS</template>
-    <template v-slot:th4>TOTAL POSTS</template>
-    <template v-slot:th5>JOIN DATE</template>
-    <template v-slot:th6>OPERATIONS</template>
+    <template v-slot:th1>Name</template>
+    <template v-slot:th2>Type</template>
+    <template v-slot:th3>Status</template>
+    <template v-slot:th4>Total Posts</template>
+    <template v-slot:th5>Joined Date</template>
+    <template v-slot:th6>Operations</template>
   </PublishersReport>
 </template>
 

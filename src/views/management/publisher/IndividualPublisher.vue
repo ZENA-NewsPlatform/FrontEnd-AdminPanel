@@ -132,7 +132,7 @@ export default {
   created() {
     var config = {
       method: "get",
-      url: "v1/publisherChannels/id/" + this.id,
+      url: "v1/publisherChannelStats/id/" + this.id,
       headers: {},
     };
     const self = this;

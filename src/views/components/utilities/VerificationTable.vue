@@ -9,13 +9,14 @@
         <th class="text-left text-gray-600"><slot name="th3">HEADER3</slot></th>
         <th class="text-left text-gray-600"><slot name="th4">HEADER4</slot></th>
         <th class="text-left text-gray-600"><slot name="th5">HEADER5</slot></th>
+        <th class="text-left text-gray-600"><slot name="th6">HEADER6</slot></th>
         
       </tr>
     </thead>
 
       <tbody class="divide-y divide-gray-200" >
         <!--Table body-->
-        <tr v-for="user in users" :key="user.id">
+        <tr v-for="request in requests" :key="request._id">
           <td class="p-2">
             <input
               type="checkbox"
@@ -34,31 +35,31 @@
            
             <div class="pr-4">
               <div>
-                <router-link :to="'/management/currentPublisher/'+user._id" class="text-gray-600 font-bolder">{{
-                  user.name
+                <router-link :to="'/management/currentPublisher/'+request._id" class="text-gray-600 font-bolder">{{
+                  request.channelName
                 }}</router-link>
               </div>
             </div>
 
              <!-- <img
                 class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
-                :src="user.avatar"
+                :src="request.avatar"
                 alt=""
               /> -->
           </td>
-          <td>{{ user.priceType }}</td>
+          <td>{{ request.adminPhoneNumber }}</td>
           <td>
             <span
-              v-if="(user.pricetype = 'free')"
-              class="px-2 py-1 rounded text-xs text-white bg-green-500"
-              >Active</span
+              v-if="(request.requestStatus = 'denied')"
+              class="px-2 py-1 rounded text-xs text-white bg-red-500"
+              >Denied</span
             >
-            <span v-else class="px-2 py-1 rounded text-xs text-white bg-red-500"
-              >Suspended</span
+            <span v-else class="px-2 py-1 rounded text-xs text-white bg-green-500"
+              >Approved</span
             >
           </td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.createdDate.slice(0, 10) }}</td>
+          <td>{{ request.document }}</td>
+          <td>{{ request.adminEmail }}</td>
           <td class="text-right">
             <Menu as="div" class="relative inline-block text-left">
               <div>
@@ -445,8 +446,8 @@ export default {
   },
 
   computed: {
-    users() {
-      return this.$store.getters['publisher/publishers'];
+    requests() {
+      return this.$store.getters['publisherVerification/requests'];
     },
     
   

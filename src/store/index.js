@@ -7,8 +7,9 @@ import dailyStats from "./modules/statistics/dailyStats";
 import profile from './modules/profile/adminProfile';
 import advertisement from './modules/advertisement/advertisement';
 import publisher from './modules/publisher/publisher';
-import publisherIndividual from './modules/publisher/publisherIndividual'
-import adIndividual from "./modules/advertisement/advertisementIndividual"
+import publisherIndividual from './modules/publisher/publisherIndividual';
+import adIndividual from "./modules/advertisement/advertisementIndividual";
+import publisherVerification from "./modules/publisher/publisherVerification";
 const getDefaultState = () => {
   return {
     token: "",
@@ -61,6 +62,7 @@ export default createStore({
     advertisement,
     publisher,
     publisherIndividual,
-    adIndividual
+    adIndividual,
+    publisherVerification
   },
 });

@@ -118,6 +118,7 @@ export default {
         const user = response.user;
         this.$store.dispatch("login", { token, user});
         localStorage.setItem("token", token);
+        console.log(token)
         this.$router.push("/");
         this.loading = false;
         

@@ -14,9 +14,10 @@
   <VerificationTable>
     <template v-slot:th1>Name</template>
     <template v-slot:th2>Contact Number</template>
-    <template v-slot:th3>Legal Document</template>
-    <template v-slot:th4>Address</template>
-    <template v-slot:th5>Operations</template>
+    <template v-slot:th3>Verification Status</template>
+    <template v-slot:th4>Authorization Document</template>
+    <template v-slot:th5>Contact Email</template>
+    <template v-slot:th6>Operations</template>
   </VerificationTable>
 
 
@@ -33,6 +34,9 @@ export default {
   data(){
     return{
     }
+  },
+  created(){
+    this.$store.dispatch("publisherVerification/fetchData");
   },
    components: {
     Menu,

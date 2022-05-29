@@ -9,7 +9,9 @@
         <th class="text-left text-gray-600"><slot name="th3">HEADER3</slot></th>
         <th class="text-left text-gray-600"><slot name="th4">HEADER4</slot></th>
         <th class="text-left text-gray-600"><slot name="th5">HEADER5</slot></th>
-        <th class="text-center text-gray-600 "><slot name="th6">HEADER6</slot></th>
+        <th class="text-center text-gray-600">
+          <slot name="th6">HEADER6</slot>
+        </th>
       </tr>
     </thead>
 
@@ -17,11 +19,11 @@
       <!--Table body-->
       <tr v-for="request in requests" :key="request._id">
         <td class="p-2">
-           <img
-                class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
-                :src="request.logo"
-                alt=""
-              />
+          <img
+            class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
+            :src="request.logo"
+            alt=""
+          />
           <!-- <input
             type="checkbox"
             class="
@@ -35,7 +37,7 @@
             "
           /> -->
         </td>
-        
+
         <td class="flex items-center py-4">
           <div class="pr-4">
             <div>
@@ -46,13 +48,13 @@
               >
             </div>
           </div>
-
-         
         </td>
 
         <td>{{ request.adminPhoneNumber }}</td>
-        <td><a href="#">{{ request.adminEmail.slice(0, 10) }}</a></td>
-        <td>{{ request.document.slice(0,10) }}</td>
+        <td>
+          <a href="#">{{ request.adminEmail.slice(0, 10) }}</a>
+        </td>
+        <td>{{ request.document.slice(0, 10) }}</td>
         <td v-if="request.requestStatus === 'undecided'">
           <span class="px-2 py-1 rounded text-xs text-white bg-yellow-400"
             >Pending</span
@@ -147,7 +149,7 @@
                         active ? 'bg-green-400 text-white' : 'text-gray-900',
                         'group flex rounded-md items-center w-full px-2 py-2 text-sm',
                       ]"
-                      @click="approve"
+                      @click="approve(request.id)"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -172,7 +174,7 @@
                         active ? 'bg-red-400 text-white' : 'text-gray-900',
                         'group flex rounded-md items-center w-full px-2 py-2 text-sm',
                       ]"
-                      @click="decline"
+                      @click="decline(request.id)"
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -437,12 +439,16 @@
 
 <script>
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
+import request from "@/controllers/request.js";
 import { ref } from "vue";
 export default {
   props: ["publishers", "ads"],
 
   data() {
-    return {};
+    return {
+      approving: false,
+      declining: false,
+    };
   },
 
   components: {
@@ -456,20 +462,36 @@ export default {
     requests() {
       return this.$store.getters["publisherVerification/requests"];
     },
+    id() {
+      return this.$store.getters["publisherVerification/id"];
+    },
+  },
+  watch: {
+    approving: "fetchUpdate",
+    declining: "fetchUpdate"
   },
 
   methods: {
-
-    approve(){
-      this.$store.dispatch('publisherVerification/approve');
-      router.push()
+    approve(id) {
+      this.approving = true;
+      request.approve(id);
+      // this.statusChanged = false;
     },
 
-    approve(){
-      this.$store.dispatch('publisherVerification/decline');
+    decline(id) {
+      this.declining = true;
+      // this.declining = false;
+      request.decline(id);
     },
 
-  }
+    fetchUpdate() {
+      console.log("Updating...");
+      this.$store.dispatch("publisherVerification/fetchData");
+    },
+    defaultState() {
+      this.statusChanged = 0;
+    },
+  },
 };
 </script>
 

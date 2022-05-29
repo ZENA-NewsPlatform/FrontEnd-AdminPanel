@@ -1,5 +1,5 @@
 <template>
-  <Breadcrumbs parentTitle="Management" :subParentTitle="name" />
+  <Breadcrumbs parentTitle="Management" :subParentTitle="publisher.name" />
   <div class="grid grid-cols-12 gap-5">
     <div
       class="col-span-1 xl:col-span-3 lg:col-span-6 md:col-span-6 sm:col-span-6"
@@ -9,7 +9,7 @@
           <i class="i-Add-User text-6xl text-purple-200"></i>
           <div class="m-auto">
             <p class="text-gray-400">Registered Users</p>
-            <p class="text-xl text-primary">{{ publisher }}</p>
+            <p class="text-xl text-primary">{{ publisher.name }}</p>
           </div>
         </div>
       </BaseCard>
@@ -23,7 +23,7 @@
           <i class="i-Add-User text-6xl text-purple-200"></i>
           <div class="m-auto">
             <p class="text-gray-400">Subscribers</p>
-            <p class="text-xl text-primary">{{ publisher }}</p>
+            <p class="text-xl text-primary">{{ publisher.subscriberCount }}</p>
           </div>
         </div>
       </BaseCard>
@@ -37,7 +37,9 @@
           <i class="i-Add-User text-6xl text-purple-200"></i>
           <div class="m-auto">
             <p class="text-gray-400">Published Contents</p>
-            <p class="text-xl text-primary">{{ publisher }}</p>
+            <p class="text-xl text-primary">
+              {{ publisher.publishedContentCount }}
+            </p>
           </div>
         </div>
       </BaseCard>
@@ -50,7 +52,7 @@
           <i class="i-Add-User text-6xl text-purple-200"></i>
           <div class="m-auto">
             <p class="text-gray-400">Editors</p>
-            <p class="text-xl text-primary">{{ publisher }}</p>
+            <p class="text-xl text-primary">{{ publisher.name }}</p>
           </div>
         </div>
       </BaseCard>
@@ -85,23 +87,33 @@
         :src="logo"
         alt=""
       />
-      <div class="flex flex-col justify-between p-4 leading-normal">
-        <h5
-          class="
-            mb-2
-            text-2xl
-            font-bold
-            tracking-tight
-            text-gray-900
-            dark:text-white
-          "
-        >
-          {{ name }}
-        </h5>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          Here are the biggest enterprise technology acquisitions of 2021 so
-          far, in reverse chronological order.
-        </p>
+
+      <div class="grid grid-cols-2 gap-0">
+        <div class="col-span-1 w-40">
+          <img
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.-otWV7EUvdcDu7qmYjy1LQHaHa%26pid%3DApi&f=1"
+            alt="logo"
+          />
+        </div>
+
+        <div class="col-span-1">
+          <h5
+            class="
+              mt-3
+              mb-2
+              text-2xl
+              font-bold
+              tracking-tight
+              text-gray-900
+              dark:text-white
+            "
+          >
+            {{ publisher.name }}
+          </h5>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 pr-3">
+            {{ publisher.description }}
+          </p>
+        </div>
       </div>
     </a>
   </div>
@@ -140,9 +152,7 @@ export default {
       .then(function (response) {
         console.log("++++++++++++++++++++++++++++++++++++++++++++");
         console.log(JSON.stringify(response.data));
-        self.publisher = response.data.data.doc.createdDate;
-        self.name = response.data.data.doc.name;
-        self.logo = response.data.data.doc.logo;
+        self.publisher = response.data.data.doc;
         console.log("++++++++++++++++++++++++++++++++++++++++++++");
       })
       .catch(function (error) {

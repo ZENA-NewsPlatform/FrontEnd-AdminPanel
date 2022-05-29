@@ -89,7 +89,7 @@ let categoriesWeeklyData = [
 
 <template>
   <div class="container mx-auto">
-    <Breadcrumbs parentTitle="Dashboard" subParentTitle="Admin panel" />
+    <Breadcrumbs parentTitle="Dashboard" subParentTitle="System Statistics" />
     <Dialog v-if="loading" class="z-50">
       <Spinner :animation-duration="4000" :size="100" color="#eeeeee"></Spinner>
     </Dialog>

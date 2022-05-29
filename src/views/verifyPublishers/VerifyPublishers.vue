@@ -12,11 +12,11 @@
     </template>
   </TableHead>
   <VerificationTable>
-    <template v-slot:th1>Name</template>
+    <template v-slot:th1>Channel</template>
     <template v-slot:th2>Contact Number</template>
-    <template v-slot:th3>Verification Status</template>
+    <template v-slot:th3>Contact Email</template>
     <template v-slot:th4>Authorization Document</template>
-    <template v-slot:th5>Contact Email</template>
+    <template v-slot:th5>Verification Status</template>
     <template v-slot:th6>Operations</template>
   </VerificationTable>
 
@@ -33,6 +33,7 @@ import Breadcrumbs from "@/components/Breadcrumbs.vue";
 export default {
   data(){
     return{
+      options:["Approved","Pending","Denied"]
     }
   },
   created(){

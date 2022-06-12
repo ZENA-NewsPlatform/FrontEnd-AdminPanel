@@ -19,15 +19,17 @@ const filters = ref(["All", "Weekly"]);
 const activeFilter = ref("All");
 
 onMounted(() => {
-  loading.value = true;
+  // loading.value = true;
   store.dispatch("totalStats/fetchTotalStats");
   store.dispatch("totalStats/fetchDailyStats");
   store.dispatch("admins/fetchAdminsList");
-  loading.value = false;
-  console.log(dataOne);
+  store.dispatch("topNews/fetchTopNews");
+  // loading.value = false;
+  // console.log(dataOne);
 });
 const statistics = computed(() => store.getters["totalStats/totalStats"]);
 const admins = computed(() => store.getters["admins/adminsList"]);
+const topNews = computed(() => store.getters["topNews/topNews"]);
 
 const category = computed(() => {
   if (activeFilter.value === "All") {
@@ -411,88 +413,45 @@ let categoriesWeeklyData = [
           </BaseCard>
         </div>
 
-        <!-- TEMPLATE LIST -->
+        <!-- TOP NEWS LIST -->
         <div class="col-span-12 xl:col-span-6 lg:col-span-6">
           <BaseCard>
-            <div class="card-title mb-4">Most Read News</div>
+            <div class="card-title mb-4">Trending News</div>
 
-            <div class="flex flex-col items-center mb-4 md:flex-row">
+            <div
+              class="flex flex-col items-center mb-4 md:flex-row"
+              v-for="trending in topNews"
+              :key="trending.id"
+            >
               <img
                 class="avatar-md mr-2 rounded w-20 h-20"
-                src="/images/products/headphone-4.jpg"
+                :src="'https://zena-api-dev.herokuapp.com/' + trending.poster"
                 alt=""
               />
               <div class="flex-grow text-center md:text-left">
                 <h5>
                   <router-link to="" class="text-gray-800 hover:text-primary">
-                    News Headline one
+                    {{ trending.title.slice(0, 35) }}
                   </router-link>
                 </h5>
                 <p class="text-gray-400 text-xs mb-3 md:mb-0">
-                  News description less than 40 characters.
+                  {{ trending.description.slice(0, 50) }}
                 </p>
-                <div class="flex justify-center mb-4 md:justify-start md:mb-0">
-                  <p class="text-primary text-sm mr-2">450,554 Views</p>
-                </div>
-              </div>
-              <BaseBtn
-                sm
-                class="
-                  border border-primary
-                  text-primary
-                  rounded-full
-                  hover:bg-primary hover:text-white
-                "
-                >View Details</BaseBtn
-              >
-            </div>
-            <div class="flex flex-col items-center mb-4 md:flex-row">
-              <img
-                class="avatar-md mr-2 rounded w-20 h-20"
-                src="/images/products/headphone-4.jpg"
-                alt=""
-              />
-              <div class="flex-grow text-center md:text-left">
-                <h5>
-                  <router-link to="" class="text-gray-800 hover:text-primary">
-                    News Headline two
-                  </router-link>
-                </h5>
                 <p class="text-gray-400 text-xs mb-3 md:mb-0">
-                  News description less than 40 characters.
+                  {{ trending.description.slice(50, 100) }}
                 </p>
-                <div class="flex justify-center mb-4 md:justify-start md:mb-0">
-                  <p class="text-primary text-sm mr-2">378,995 Views</p>
-                </div>
-              </div>
-              <BaseBtn
-                sm
-                class="
-                  border border-primary
-                  text-primary
-                  rounded-full
-                  hover:bg-primary hover:text-white
-                "
-                >View Details</BaseBtn
-              >
-            </div>
-            <div class="flex flex-col items-center mb-4 md:flex-row">
-              <img
-                class="avatar-md mr-2 rounded w-20 h-20"
-                src="/images/products/headphone-4.jpg"
-                alt=""
-              />
-              <div class="flex-grow text-center md:text-left">
-                <h5>
-                  <router-link to="" class="text-gray-800 hover:text-primary">
-                    News Headline three
-                  </router-link>
-                </h5>
                 <p class="text-gray-400 text-xs mb-3 md:mb-0">
-                  News description less than 40 characters.
+                  {{ trending.description.slice(100, 150) }}
                 </p>
+
+                <p></p>
+                <!-- <div v-for="publisher in trending.publisherChannel" :key="publisher.id" class="flex flex-row text-xs flex-nowrap"> -->
+                <!-- <h5>{{ JSON.parse(trending)}}</h5> -->
+                <!-- </div> -->
                 <div class="flex justify-center mb-4 md:justify-start md:mb-0">
-                  <p class="text-primary text-sm mr-2">320,090 Views</p>
+                  <p class="text-primary text-sm mr-2">
+                    {{ trending.viewCount }} Views
+                  </p>
                 </div>
               </div>
               <BaseBtn
@@ -507,30 +466,20 @@ let categoriesWeeklyData = [
               >
             </div>
           </BaseCard>
-
         </div>
 
-      <div class="card-title py-3">Admins</div>
+        <div class="card-title py-3">Admins</div>
 
-          <!-- ADMINISTRATORS LIST -->
-        <div
-          class="
-            col-span-12
-            space-x-4
-            flex flex-row
-
-          "
-        >
-      
-
-          <BaseCard class="text-center " v-for="admin in admins" :key="admin.id" >
+        <!-- ADMINISTRATORS LIST -->
+        <div class="col-span-12 space-x-4 flex flex-row">
+          <BaseCard class="text-center" v-for="admin in admins" :key="admin.id">
             <img
               class="w-20 h-20 m-auto shadow-lg avatar-md rounded-full"
               :src="admin.photo"
               alt=""
             />
-            <p class="text-base mt-4">{{admin.name}}</p>
-            <p class="text-xs text-gray-400">{{admin.type}}</p>
+            <p class="text-base mt-4">{{ admin.name }}</p>
+            <p class="text-xs text-gray-400">{{ admin.type }}</p>
             <p class="my-2 text-sm text-gray-500 mb-3">
               Details on the admin...
             </p>
@@ -549,9 +498,8 @@ let categoriesWeeklyData = [
               </router-link>
             </div>
           </BaseCard>
-        
-     </div>
-       
+        </div>
+
         <div class="col-span-12 card xl:col-span-6 lg:col-span-12"></div>
         <div class="col-span-12">
           <BaseCard>

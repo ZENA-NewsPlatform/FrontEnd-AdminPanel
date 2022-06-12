@@ -468,7 +468,7 @@ export default {
   },
   watch: {
     approving: "fetchUpdate",
-    declining: "fetchUpdate"
+    declining: "fetchUpdate",
   },
 
   methods: {

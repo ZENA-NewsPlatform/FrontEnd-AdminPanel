@@ -7,7 +7,7 @@ import {
 } from "@/data/dashboard.v1.js";
 import Breadcrumbs from "@/components/Breadcrumbs.vue";
 import ReportFilter from "../components/utilities/ReportFilter.vue";
-import DashboardTable from "../components/DashboardTable.vue"
+import DashboardTable from "../components/DashboardTable.vue";
 import { useRouter } from "vue-router";
 import { ref, onMounted, computed } from "vue";
 import { useStore } from "vuex";
@@ -22,10 +22,13 @@ onMounted(() => {
   loading.value = true;
   store.dispatch("totalStats/fetchTotalStats");
   store.dispatch("totalStats/fetchDailyStats");
+  store.dispatch("admins/fetchAdminsList");
   loading.value = false;
   console.log(dataOne);
 });
 const statistics = computed(() => store.getters["totalStats/totalStats"]);
+const admins = computed(() => store.getters["admins/adminsList"]);
+
 const category = computed(() => {
   if (activeFilter.value === "All") {
     return categoriesTotalData;
@@ -279,12 +282,25 @@ let categoriesWeeklyData = [
           <BaseCard v-if="isTotal">
             <h4 class="card-title mb-4">News By Categories</h4>
             <!-- Filter Component -->
-            <div class=" inline-flex space-x-4">
+            <div class="inline-flex space-x-4">
               <p v-for="(filter, index) in filters" :key="index">
                 <button
                   @click="filterData(filter)"
                   :class="{ active: filter === activeFilter }"
-                  class="bg-white hover:bg-gray-100 text-gray-800 focus:border-primary focus:text-primary font-semibold py-1.5 px-4 border border-gray-400 rounded shadow"               >                  {{ filter }}
+                  class="
+                    bg-white
+                    hover:bg-gray-100
+                    text-gray-800
+                    focus:border-primary focus:text-primary
+                    font-semibold
+                    py-1.5
+                    px-4
+                    border border-gray-400
+                    rounded
+                    shadow
+                  "
+                >
+                  {{ filter }}
                 </button>
               </p>
             </div>
@@ -313,12 +329,25 @@ let categoriesWeeklyData = [
           <BaseCard>
             <h4 class="card-title mb-4">News By Type</h4>
             <!-- Filter Component -->
-            <div class=" inline-flex space-x-4">
+            <div class="inline-flex space-x-4">
               <p v-for="(filter, index) in filters" :key="index">
                 <button
                   @click="filterData(filter)"
                   :class="{ active: filter === activeFilter }"
-                  class="bg-white hover:bg-gray-100 text-gray-800 focus:border-primary focus:text-primary font-semibold py-1.5 px-4 border border-gray-400 rounded shadow"               >                  {{ filter }}
+                  class="
+                    bg-white
+                    hover:bg-gray-100
+                    text-gray-800
+                    focus:border-primary focus:text-primary
+                    font-semibold
+                    py-1.5
+                    px-4
+                    border border-gray-400
+                    rounded
+                    shadow
+                  "
+                >
+                  {{ filter }}
                 </button>
               </p>
             </div>
@@ -479,81 +508,50 @@ let categoriesWeeklyData = [
             </div>
           </BaseCard>
 
-          <!-- ADMINISTRATORS LIST -->
-        </div>
-        <div
-          class="
-            col-span-12
-            xl:col-span-3
-            lg:col-span-3
-            md:col-span-6
-            sm:col-span-6
-          "
-        >
-          <BaseCard class="text-center">
-            <img
-              class="w-20 h-20 m-auto shadow-lg avatar-md rounded-full"
-              src="/images/faces/2.jpg"
-              alt=""
-            />
-            <p class="text-base mt-4">Admin Two</p>
-            <p class="text-xs text-gray-400">Adminstrator</p>
-            <p class="my-2 text-sm text-gray-500 mb-3">
-              Details on the admin...
-            </p>
-            <BaseBtn sm class="bg-primary text-white rounded-full">
-              View Activities
-            </BaseBtn>
-            <div class="mt-4">
-              <router-link to="" class="mr-2 hover:text-primary">
-                <i class="i-Linkedin-2 text-xs"></i>
-              </router-link>
-              <router-link to="" class="mr-2 hover:text-primary">
-                <i class="i-Facebook-2 text-xs"></i>
-              </router-link>
-              <router-link to="" class="mr-2 hover:text-primary">
-                <i class="i-Twitter text-xs"></i>
-              </router-link>
-            </div>
-          </BaseCard>
-        </div>
-        <div
-          class="
-            col-span-12
-            xl:col-span-3
-            lg:col-span-3
-            md:col-span-6
-            sm:col-span-6
-          "
-        >
-          <BaseCard class="text-center">
-            <img
-              class="w-20 h-20 m-auto shadow-lg avatar-md rounded-full"
-              src="/images/faces/9.jpg"
-              alt=""
-            />
-            <p class="text-base mt-4">Admin Three</p>
-            <p class="text-xs text-gray-400">Adminstrator</p>
-            <p class="my-2 text-sm text-gray-500 mb-3">
-              Details on the admin...
-            </p>
-            <BaseBtn sm class="bg-primary text-white rounded-full">
-              View Activities
-            </BaseBtn>
-            <div class="mt-4">
-              <router-link to="" class="mr-2 hover:text-primary">
-                <i class="i-Linkedin-2 text-xs"></i>
-              </router-link>
-              <router-link to="" class="mr-2 hover:text-primary">
-                <i class="i-Facebook-2 text-xs"></i>
-              </router-link>
-              <router-link to="" class="mr-2 hover:text-primary">
-                <i class="i-Twitter text-xs"></i>
-              </router-link>
-            </div>
-          </BaseCard>
         </div>
 
+      <div class="card-title py-3">Admins</div>
+
+          <!-- ADMINISTRATORS LIST -->
+        <div
+          class="
+            col-span-12
+            space-x-4
+            flex flex-row
+
+          "
+        >
+      
+
+          <BaseCard class="text-center " v-for="admin in admins" :key="admin.id" >
+            <img
+              class="w-20 h-20 m-auto shadow-lg avatar-md rounded-full"
+              :src="admin.photo"
+              alt=""
+            />
+            <p class="text-base mt-4">{{admin.name}}</p>
+            <p class="text-xs text-gray-400">{{admin.type}}</p>
+            <p class="my-2 text-sm text-gray-500 mb-3">
+              Details on the admin...
+            </p>
+            <BaseBtn sm class="bg-primary text-white rounded-full">
+              View Activities
+            </BaseBtn>
+            <div class="mt-4">
+              <router-link to="" class="mr-2 hover:text-primary">
+                <i class="i-Linkedin-2 text-xs"></i>
+              </router-link>
+              <router-link to="" class="mr-2 hover:text-primary">
+                <i class="i-Facebook-2 text-xs"></i>
+              </router-link>
+              <router-link to="" class="mr-2 hover:text-primary">
+                <i class="i-Twitter text-xs"></i>
+              </router-link>
+            </div>
+          </BaseCard>
+        
+     </div>
+       
         <div class="col-span-12 card xl:col-span-6 lg:col-span-12"></div>
         <div class="col-span-12">
           <BaseCard>
@@ -579,8 +577,7 @@ let categoriesWeeklyData = [
                   fixed-columns
                 "
               >
-               
-               <DashboardTable></DashboardTable>
+                <DashboardTable></DashboardTable>
 
                 <div class="dataTable-bottom">
                   <div class="dataTable-info">

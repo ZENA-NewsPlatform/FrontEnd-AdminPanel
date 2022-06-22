@@ -78,11 +78,11 @@ const logout = () => {
       </div>
 
       <!-- MAIN SEARCH -->
-      <!-- <HeaderSearch /> -->
+      <HeaderSearch />
     </div>
     <div class="flex items-center">
       <!-- notification-dropdown  -->
-      <!-- <Menu as="div" class="relative inline-block text-left">
+      <Menu as="div" class="relative inline-block text-left">
         <div>
           <MenuButton
             class="
@@ -161,9 +161,9 @@ const logout = () => {
                         </MenuItem>
                     </div>
         </MenuItems>
-      </Menu> -->
+      </Menu>
       <!-- PROFILE-DROPDOWN  -->
-      <Menu as="div" class="relative inline-block mr-10 text-left">
+      <Menu as="div" class="relative inline-block text-left">
         <div>
           <MenuButton
             class="

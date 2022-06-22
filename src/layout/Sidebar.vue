@@ -78,7 +78,7 @@ let handleWindowResize = () => {
                 <p>Profile</p>
               </div>
             </router-link>
-            <!-- <router-link
+            <router-link
               to= "/advertisements/list"
               tag="li"
               class="nav-item"
@@ -88,8 +88,8 @@ let handleWindowResize = () => {
                 <i class="i-Movie-Ticket text-3xl"></i>
                 <p>Advertisements</p>
               </div>
-            </router-link> -->
-            <!-- <router-link
+            </router-link>
+            <router-link
               to= "/categories/list"
               tag="li"
               class="nav-item"
@@ -99,8 +99,8 @@ let handleWindowResize = () => {
                 <i class="i-Posterous text-3xl"></i>
                 <p>Categories</p>
               </div>
-            </router-link> -->
-            <!-- <router-link
+            </router-link>
+            <router-link
               to= "/providers/list"
               tag="li"
               class="nav-item"
@@ -110,7 +110,7 @@ let handleWindowResize = () => {
                 <i class="i-Shop text-3xl"></i>
                 <p>Providers</p>
               </div>
-            </router-link> -->
+            </router-link>
             <router-link
               to= "/verifyPublishers/list"
               tag="li"

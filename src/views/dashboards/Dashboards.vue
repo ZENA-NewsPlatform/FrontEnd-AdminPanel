@@ -527,7 +527,7 @@ let categoriesWeeklyData = [
               >
                 <DashboardTable></DashboardTable>
 
-                <div class="hidden dataTable-bottom">
+                <div class="dataTable-bottom">
                   <div class="dataTable-info">
                     Showing 1 to 8 of 42 publishers
                   </div>

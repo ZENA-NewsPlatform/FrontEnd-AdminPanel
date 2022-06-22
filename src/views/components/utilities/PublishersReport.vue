@@ -62,8 +62,7 @@
           <td>{{ user.email }}</td>
           <td>{{ user.createdDate.slice(0, 10) }}</td>
           <td class="text-right">
-            {{user.newsType}}
-            <!-- <Menu as="div" class="relative inline-block text-left">
+            <Menu as="div" class="relative inline-block text-left">
               <div>
                 <MenuButton
                   class="
@@ -132,8 +131,8 @@
                     z-50
                     focus:outline-none
                   "
-                > -->
-                  <!-- <div class="px-1 py-1">
+                >
+                  <div class="px-1 py-1">
                     <MenuItem v-slot="{ active }">
                       <button
                         :class="[
@@ -182,10 +181,10 @@
                         Delete
                       </button>
                     </MenuItem>
-                  </div> -->
-                <!-- </MenuItems> -->
-              <!-- </transition> -->
-            <!-- </Menu> -->
+                  </div>
+                </MenuItems>
+              </transition>
+            </Menu>
           </td>
         </tr>
       </tbody>
@@ -198,7 +197,7 @@
 
    
 
-    <tfoot class="hidden">
+    <tfoot>
       <!--Table footer-->
       <tr>
         <td colspan="7" class="py-2">

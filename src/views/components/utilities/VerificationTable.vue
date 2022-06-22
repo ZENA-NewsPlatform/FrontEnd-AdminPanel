@@ -206,7 +206,7 @@
         <p>Empty List</p>
       </div> -->
 
-    <tfoot>
+    <tfoot class="hidden">
       <!--Table footer-->
       <tr>
         <td colspan="7" class="py-2">

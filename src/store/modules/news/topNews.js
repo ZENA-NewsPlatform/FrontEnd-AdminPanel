@@ -3,7 +3,7 @@ import axios from'axios';
 var auth = "Bearer " + localStorage.getItem("token");
 var config = {
   method: 'get',
-  url: 'v1/news?sort=viewCount&limit=3',
+  url: 'v1/news?viewCount[gte]=201&limit=3',
   headers: {
     Authorization: auth,
   }

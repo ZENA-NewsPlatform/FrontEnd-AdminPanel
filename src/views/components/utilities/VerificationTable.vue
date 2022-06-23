@@ -21,7 +21,7 @@
         <td class="p-2">
           <img
             class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
-            :src="request.logo"
+            :src="'https://zena-api-dev.herokuapp.com/'+request.logo"
             alt=""
           />
           <!-- <input

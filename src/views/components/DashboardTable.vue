@@ -74,12 +74,12 @@
                 class="w-9 h-9 rounded-full mr-2"
                 :src="
                   'https://zena-api-dev.herokuapp.com/' +
-                  publisher.publisherChannel.logo
+                  publisher.logo
                 "
                 alt=""
               />
               <h5 class="pl-2 pt-1">
-                {{ publisher.publisherChannel.name }}
+                {{ publisher.name }}
               </h5>
             </div>
           </td>

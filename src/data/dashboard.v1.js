@@ -103,13 +103,15 @@ export const dashboardOne = {
         },
         xaxis: {
             categories: [
+                'Friday',
+                'Saturday',
+                'Sunday', 
                 'Monday',
                 'Tuesday',
                 'Wednesday',
                 'Thursday',
-                'Friday',
-                'Saturday',
-                'Sunday',     
+                
+    
             ],
         },
         fill: {
@@ -179,7 +181,7 @@ export const dashboardOne = {
 // }
 
 export const dashboardTwo = {
-    series: [4100, 633, 477],
+    series: [18, 4, 4],
     chartOptions: {
         fill: {
             colors: ['#DDD6FE', '#C4B5FD', '#A78BFA'],

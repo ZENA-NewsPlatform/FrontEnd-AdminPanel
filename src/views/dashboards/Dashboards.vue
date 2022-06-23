@@ -16,7 +16,7 @@ let store = useStore();
 const isTotal = ref(true);
 const loading = ref(false);
 const filters = ref(["All", "Weekly"]);
-const activeFilter = ref("All");
+const activeFilter = ref("Weekly");
 
 onMounted(() => {
   // loading.value = true;
@@ -24,8 +24,8 @@ onMounted(() => {
   store.dispatch("totalStats/fetchDailyStats");
   store.dispatch("admins/fetchAdminsList");
   store.dispatch("topNews/fetchTopNews");
-  // loading.value = false;
-  // console.log(dataOne);
+  // store.dispatch("totalStats/fetchWeeklyStats");
+  
 });
 const statistics = computed(() => store.getters["totalStats/totalStats"]);
 const admins = computed(() => store.getters["admins/adminsList"]);
@@ -76,19 +76,19 @@ let categoriesTotalData = [
 let categoriesWeeklyData = [
   {
     name: "Global",
-    data: [12, 55, 57, 56, 61, 58, 63],
+    data: [0, 3, 3, 12, 3, 3, 3],
   },
   {
     name: "Business",
-    data: [76, 85, 101, 98, 87, 105, 91],
+    data: [6, 8, 10, 21, 12, 3, 1],
   },
   {
     name: "Entertainment",
-    data: [43, 75, 10, 22, 19, 98, 11],
+    data: [29, 17, 10, 22, 19, 6, 1],
   },
   {
     name: "Technology",
-    data: [28, 33, 15, 22, 22, 11, 37],
+    data: [8, 0, 2, 2, 7, 3, 0],
   },
 ];
 </script>
@@ -431,18 +431,18 @@ let categoriesWeeklyData = [
               <div class="flex-grow text-center md:text-left">
                 <h5>
                   <router-link to="" class="text-gray-800 hover:text-primary">
-                    {{ trending.title.slice(0, 35) }}
+                    {{ trending.title }}
                   </router-link>
                 </h5>
                 <p class="text-gray-400 text-xs mb-3 md:mb-0">
-                  {{ trending.description.slice(0, 50) }}
+                  {{ trending.description }}
                 </p>
-                <p class="text-gray-400 text-xs mb-3 md:mb-0">
+                <!-- <p class="text-gray-400 text-xs mb-3 md:mb-0">
                   {{ trending.description.slice(50, 100) }}
                 </p>
                 <p class="text-gray-400 text-xs mb-3 md:mb-0">
                   {{ trending.description.slice(100, 150) }}
-                </p>
+                </p> -->
 
                 <p></p>
                 <!-- <div v-for="publisher in trending.publisherChannel" :key="publisher.id" class="flex flex-row text-xs flex-nowrap"> -->
@@ -454,7 +454,7 @@ let categoriesWeeklyData = [
                   </p>
                 </div>
               </div>
-              <BaseBtn
+              <!-- <BaseBtn
                 sm
                 class="
                   border border-primary
@@ -463,7 +463,7 @@ let categoriesWeeklyData = [
                   hover:bg-primary hover:text-white
                 "
                 >View Details</BaseBtn
-              >
+              > -->
             </div>
           </BaseCard>
         </div>

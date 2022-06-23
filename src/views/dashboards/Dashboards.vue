@@ -30,6 +30,7 @@ onMounted(() => {
 const statistics = computed(() => store.getters["totalStats/totalStats"]);
 const admins = computed(() => store.getters["admins/adminsList"]);
 const topNews = computed(() => store.getters["topNews/topNews"]);
+const users = computed(() => store.getters["publisher/publishers"]);
 
 const category = computed(() => {
   if (activeFilter.value === "All") {

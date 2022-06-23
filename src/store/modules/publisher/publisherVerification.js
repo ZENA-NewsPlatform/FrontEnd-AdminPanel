@@ -3,7 +3,7 @@ var auth = "Bearer " + localStorage.getItem("token");
 
 var config = {
   method: "get",
-  url: "v1/publisherChannelsRequest",
+  url: "v1/publisherChannelsRequest?sort=-createdDate",
   headers: {
     Authorization: auth,
   },

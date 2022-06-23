@@ -17,7 +17,7 @@
 
 
 
-    <template v-slot:add-new>
+    <!-- <template v-slot:add-new>
       <div class="relative text-lg text-gray-400 w-48">
         <button class="
         flex
@@ -61,7 +61,7 @@
           </ul>
         </transition>
       </div>
-    </template>
+    </template> -->
   </TableHead>
 
   <!--PUBLISHER TABLE OF REPORT-->

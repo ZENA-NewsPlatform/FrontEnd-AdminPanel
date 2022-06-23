@@ -375,7 +375,7 @@ let categoriesWeeklyData = [
           <BaseCard noPadding class="overflow-hidden">
             <div class="p-5">
               <div class="text-gray-500">Estimated Earnings</div>
-              <p class="text-primary text-2xl m-0">3820ETB</p>
+              <p class="text-primary text-2xl m-0">{{ stat.earning }} ETB</p>
             </div>
             <div id="basicArea-chart">
               <apexchart
@@ -400,7 +400,7 @@ let categoriesWeeklyData = [
           <BaseCard noPadding class="overflow-hidden">
             <div class="p-5">
               <div class="text-gray-500">Estimated Contents</div>
-              <p class="text-warning text-2xl m-0">263</p>
+              <p class="text-warning text-2xl m-0">{{stat.PublishedNewsContent}}</p>
             </div>
             <div id="basicArea-chart">
               <apexchart

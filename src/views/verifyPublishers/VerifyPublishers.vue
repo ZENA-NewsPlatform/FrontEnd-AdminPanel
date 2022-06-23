@@ -4,7 +4,7 @@
     <Spinner :animation-duration="4000" :size="60" color="#eeeeee"></Spinner>
   </Dialog>
   <TableHead>
-    <template v-slot:add-new>
+    <!-- <template v-slot:add-new>
 
       <div class="relative text-lg text-gray-400 w-48">
         <button class="
@@ -50,7 +50,7 @@
         </transition>
       </div>
 
-    </template>
+    </template> -->
    
   </TableHead>
   <VerificationTable>

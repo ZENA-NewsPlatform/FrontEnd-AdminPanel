@@ -10,9 +10,7 @@ import publisher from './modules/publisher/publisher';
 import publisherIndividual from './modules/publisher/publisherIndividual';
 import adIndividual from "./modules/advertisement/advertisementIndividual";
 import publisherVerification from "./modules/publisher/publisherVerification";
-import publisherStatistics from "./modules/statistics/publisherStatistics";
-import admins from "./modules/admin/admins";
-import topNews from "./modules/news/topNews";
+
 const getDefaultState = () => {
   return {
     token: "",
@@ -67,8 +65,6 @@ export default createStore({
     publisherIndividual,
     adIndividual,
     publisherVerification,
-    publisherStatistics,
-    admins,
-    topNews
+
   },
 });

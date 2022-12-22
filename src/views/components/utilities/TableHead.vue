@@ -28,7 +28,7 @@
   <div class="p-4 ml-1.5 mt-0 sm:px-8 sm:py-4 flex justify-between ">
 
     <!-- SEARCH -->
-    <div class="py-1.5 ml-8 mr-20 mt-0.5 bg-white rounded flex content-start">
+    <div class="hidden py-1.5 ml-8 mr-20 mt-0.5 bg-white rounded flex content-start">
       <div class="flex justify-between">
         <div>
           <div class="relative text-gray-400">

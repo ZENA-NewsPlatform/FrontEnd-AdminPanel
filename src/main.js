@@ -14,6 +14,7 @@ import axios from 'axios';
 
 
 axios.defaults.baseURL = 'https://zena-api-dev.herokuapp.com/api';
+// axios.defaults.baseURL = 'http://localhost:8080/api'
 axios.defaults.headers.common['Authorization'] = `Bearer ${store.state.token}`;
 import PerfectScrollbar from 'vue3-perfect-scrollbar'
 import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css'

@@ -1,7 +1,7 @@
 import { createStore } from "vuex";
 import axios from 'axios';
 import largeSidebar from "./modules/largeSidebar";
-import accounts from "./modules/admin/accounts";
+import accounts from "./modules/admin/admins";
 import totalStats from "./modules/statistics/totalStats";
 import dailyStats from "./modules/statistics/dailyStats";
 import profile from './modules/profile/adminProfile';
@@ -10,7 +10,7 @@ import publisher from './modules/publisher/publisher';
 import publisherIndividual from './modules/publisher/publisherIndividual';
 import adIndividual from "./modules/advertisement/advertisementIndividual";
 import publisherVerification from "./modules/publisher/publisherVerification";
-import theme from "./theme/theme";
+
 const getDefaultState = () => {
   return {
     token: "",
@@ -65,6 +65,6 @@ export default createStore({
     publisherIndividual,
     adIndividual,
     publisherVerification,
-    theme
+
   },
 });

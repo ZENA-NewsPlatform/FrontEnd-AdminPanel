@@ -3,25 +3,35 @@
     <thead class="border-b ml-5">
       <!--Table head or the first row of the table -->
       <tr>
-        <th class="p-0 pl-4 text-left text-gray-600"><!--Table headers--></th>
-        <th class="text-left text-gray-600"><slot name="th1">HEADER1</slot></th>
-        <th class="text-left text-gray-600"><slot name="th2">HEADER2</slot></th>
-        <th class="text-left text-gray-600"><slot name="th3">HEADER3</slot></th>
-        <th class="text-left text-gray-600"><slot name="th4">HEADER4</slot></th>
-        <th class="text-left text-gray-600"><slot name="th5">HEADER5</slot></th>
+        <th class="p-0 pl-4 text-left text-gray-600">
+          <!--Table headers-->
+        </th>
+        <th class="text-left text-gray-600">
+          <slot name="th1">HEADER1</slot>
+        </th>
+        <th class="text-left text-gray-600">
+          <slot name="th2">HEADER2</slot>
+        </th>
+        <th class="text-left text-gray-600">
+          <slot name="th3">HEADER3</slot>
+        </th>
+        <th class="text-left text-gray-600">
+          <slot name="th4">HEADER4</slot>
+        </th>
+        <th class="text-left text-gray-600">
+          <slot name="th5">HEADER5</slot>
+        </th>
         <th class="text-right text-gray-600">
           <slot name="th6">HEADER6</slot>
         </th>
       </tr>
     </thead>
 
-      <tbody class="divide-y divide-gray-200" >
-        <!--Table body-->
-        <tr v-for="user in users" :key="user.id">
-          <td class="p-2">
-            <input
-              type="checkbox"
-              class="
+    <tbody class="divide-y divide-gray-200">
+      <!--Table body-->
+      <tr v-for="user in users" :key="user.id">
+        <td class="p-2">
+          <input type="checkbox" class="
                 h-5
                 w-5
                 text-blue-500
@@ -29,40 +39,34 @@
                 rounded
                 cursor-pointer
                 focus:ring-0
-              "
-            />
-          </td>
-          <td class="flex items-center py-4">
-           
-            <div class="pr-4">
-              <div>
-                <router-link :to="'/management/currentPublisher/'+user._id" class="text-gray-600 font-bolder">{{
-                  user.name
-                }}</router-link>
-              </div>
-            </div>
+              " />
+        </td>
+        <td class="flex items-center py-4">
 
-             <!-- <img
+          <div class="pr-4">
+            <div>
+              <router-link :to="'/management/currentPublisher/' + user._id" class="text-gray-600 font-bolder">{{
+                  user.name
+              }}</router-link>
+            </div>
+          </div>
+
+          <!-- <img
                 class="inline-block h-12 w-12 rounded-full ring-2 ring-white"
                 :src="user.avatar"
                 alt=""
               /> -->
-          </td>
-          <td>{{ user.priceType }}</td>
-          <td>
-            <span
-              v-if="(user.pricetype = 'free')"
-              class="px-2 py-1 rounded text-xs text-white bg-green-500"
-              >Active</span
-            >
-            <span v-else class="px-2 py-1 rounded text-xs text-white bg-red-500"
-              >Suspended</span
-            >
-          </td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.createdDate.slice(0, 10) }}</td>
-          <td class="text-right">
-            <Menu as="div" class="relative inline-block text-left">
+        </td>
+        <td>{{ user.priceType }}</td>
+        <td>
+          <span v-if="(user.pricetype = 'free')" class="px-2 py-1 rounded text-xs text-white bg-green-500">Active</span>
+          <span v-else class="px-2 py-1 rounded text-xs text-white bg-red-500">Suspended</span>
+        </td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.createdDate.slice(0, 10) }}</td>
+        <td class="text-right">
+          {{ user.newsType }}
+          <!-- <Menu as="div" class="relative inline-block text-left">
               <div>
                 <MenuButton
                   class="
@@ -131,8 +135,8 @@
                     z-50
                     focus:outline-none
                   "
-                >
-                  <div class="px-1 py-1">
+                > -->
+          <!-- <div class="px-1 py-1">
                     <MenuItem v-slot="{ active }">
                       <button
                         :class="[
@@ -181,29 +185,27 @@
                         Delete
                       </button>
                     </MenuItem>
-                  </div>
-                </MenuItems>
-              </transition>
-            </Menu>
-          </td>
-        </tr>
-      </tbody>
+                  </div> -->
+          <!-- </MenuItems> -->
+          <!-- </transition> -->
+          <!-- </Menu> -->
+        </td>
+      </tr>
+    </tbody>
 
-<!-- 
+    <!-- 
       <div v-if="!isNot">
         <p>Empty List</p>
       </div> -->
 
 
-   
 
-    <tfoot>
+
+    <tfoot class="hidden">
       <!--Table footer-->
       <tr>
         <td colspan="7" class="py-2">
-          <div
-            class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between"
-          >
+          <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
             <div>
               <p class="text-sm text-gray-500">
                 Showing
@@ -217,20 +219,15 @@
             </div>
             <!-- PAGINATOR -->
             <div>
-              <nav
-                class="
+              <nav class="
                   relative
                   z-0
                   inline-flex
                   rounded-md
                   shadow-sm
                   -space-x-px
-                "
-                aria-label="Pagination"
-              >
-                <a
-                  href="#"
-                  class="
+                " aria-label="Pagination">
+                <a href="#" class="
                     relative
                     inline-flex
                     items-center
@@ -241,29 +238,15 @@
                     font-medium
                     text-gray-500
                     hover:bg-gray-50
-                  "
-                >
+                  ">
                   <span class="sr-only">Previous</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M15 19l-7-7 7-7"
-                    />
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                   </svg>
                 </a>
                 <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
-                <a
-                  href="#"
-                  aria-current="page"
-                  class="
+                <a href="#" aria-current="page" class="
                     z-10
                     bg-indigo-50
                     border-indigo-500
@@ -276,13 +259,10 @@
                     border
                     text-sm
                     font-medium
-                  "
-                >
+                  ">
                   1
                 </a>
-                <a
-                  href="#"
-                  class="
+                <a href="#" class="
                     border-gray-300
                     text-gray-500
                     hover:bg-gray-50
@@ -294,13 +274,10 @@
                     border
                     text-sm
                     font-medium
-                  "
-                >
+                  ">
                   2
                 </a>
-                <a
-                  href="#"
-                  class="
+                <a href="#" class="
                     border-gray-300
                     text-gray-500
                     hover:bg-gray-50
@@ -313,12 +290,10 @@
                     border
                     text-sm
                     font-medium
-                  "
-                >
+                  ">
                   3
                 </a>
-                <span
-                  class="
+                <span class="
                     relative
                     inline-flex
                     items-center
@@ -328,13 +303,10 @@
                     text-sm
                     font-medium
                     text-gray-700
-                  "
-                >
+                  ">
                   ...
                 </span>
-                <a
-                  href="#"
-                  class="
+                <a href="#" class="
                     border-gray-300
                     text-gray-500
                     hover:bg-gray-50
@@ -347,13 +319,10 @@
                     border
                     text-sm
                     font-medium
-                  "
-                >
+                  ">
                   8
                 </a>
-                <a
-                  href="#"
-                  class="
+                <a href="#" class="
                     border-gray-300
                     text-gray-500
                     hover:bg-gray-50
@@ -365,13 +334,10 @@
                     border
                     text-sm
                     font-medium
-                  "
-                >
+                  ">
                   9
                 </a>
-                <a
-                  href="#"
-                  class="
+                <a href="#" class="
                     border-gray-300
                     text-gray-500
                     hover:bg-gray-50
@@ -383,13 +349,10 @@
                     border
                     text-sm
                     font-medium
-                  "
-                >
+                  ">
                   10
                 </a>
-                <a
-                  href="#"
-                  class="
+                <a href="#" class="
                     relative
                     inline-flex
                     items-center
@@ -401,22 +364,11 @@
                     font-medium
                     text-gray-500
                     hover:bg-gray-50
-                  "
-                >
+                  ">
                   <span class="sr-only">Next</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 5l7 7-7 7"
-                    />
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                   </svg>
                 </a>
               </nav>
@@ -450,10 +402,13 @@ export default {
     users() {
       return this.$store.getters['publisher/publishers'];
     },
-    
-  
+
+    // freeUsers() { return this.$store.getters['publisher/freeusers']; },
+
+
   },
 };
 </script>
 
-<style></style>
+<style>
+</style>
